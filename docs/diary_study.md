@@ -349,3 +349,103 @@ Were there any experiences in your classes today that you would have liked to be
 Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
 <br>It was alright. I was up until like 2 am the previous day so I almost fell asleep
 
+## PERSON 8
+How was your experience with your classes today? Was there anything that stood out?
+<br>My experience with my classes today was moderately normal. Nothing really stood out except that we got to watch a documentary for history.
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>My original expectations were not far off from my experience today. It is neutral.
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>My homework load today was quite manageable. I got to go to bed fairly early, even with track.
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>There is nothing I could have possibly prepared beforehand.
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>Something that hindered my learning experience is that I sit in the back in calc so I could barely see the board. I enjoyed the presentation today during calc.
+
+----
+
+How was your experience with your classes today? Was there anything that stood out?
+<br>My experience today was exhilarating. I finally got to present my TNS project in Calc.
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>My presentation went far better than I expected. I would say this is objectively good.
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>Today, I did not receive an overwhelming amount of homework from any of my teachers.
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>Yes, during my weight training class, we could not use the room because a third party came to maintain the machines.
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>I did not get to exercise today in weight training. I really enjoyed presenting today because my peers were all very engaged.
+
+----
+
+How was your experience with your classes today? Was there anything that stood out?
+<br>Unfortunately, I could not make it to class today because I am sick.
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>I sadly did not attend any of my classes. I reckon that my experience today was quite unexpected.
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>I got a moderate amount of make-up work from my teachers today. Thankfully, I have the weekend to make up a good portion of it.
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>There is nothing I could have physically or mentally prepared today.
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>My sickness hindered my learning experience today. Nothing about this is enjoyable. I am suffering.
+
+## PERSON 9
+How was your experience with your classes today? Was there anything that stood out?
+<br>So I think I suck at math but everything’s alright. It just felt like a normal day except the CASSP testing where I just did my homework for 75 min.
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>So English is way easier than it should be, chem is hard like it should be, but Anatomy was actually quite fun, even if we just did notes. Honestly, it’s first day back, so I’m a little rusty but honestly life’s pretty accurate to what I thought it would be.
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>Honestly, this is the normal workload, but the load will definitely get heavier as AP exams season comes along and I have to actually start reading in English (depressing I know). Chem had no homework because I already did it.
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>I don’t really do anything in English and I should be 
+<br>AP Chem moves too fast for good understanding of the topic but ok ig
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>Honestly, just my own brain and its own distractions - I just have trouble focusing because I’m hungry or I don’t enjoy the topic or I’m tired. I think it’s hard to study during CASSP testing time. I’m having a great time with teachers who go over things multiple times just to make sure you really understand what’s going on and how patient they are when you are struggling a bit. 
+
+----
+
+How was your experience with your classes today? Was there anything that stood out?
+<br>Dude what is even math? Everything is fine but math. What is calculus?
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>I think today is okay, but math is getting a lot harder. English is still a class where I do nothing, so I read my independent reading book. 
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>I just have a lot of homework for math and I think that I’ll get it done some day. It’s a little harder than some days but I think that everything is going quite good.
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>I would have liked to learn more about the math that I was doing, bcause I can barely understand what’s going on, but I think thats the experience of learning. I would like to know about my tests a week beforehand and not 3 days before.
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>Krogh blasting music at 8:30 am and yelling makes it really hard to learn math because all you can hear is spanish songs while trying to learn about integrals and revolutions.
+
+----
+
+How was your experience with your classes today? Was there anything that stood out?
+<br>Hey, Krogh wasn’t blasting music because the band was playing music way bettr than she can. I’m glad there was a better music choice, even if it was way too loud. 
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>Most of my classes were the same but a nice music blast during math class at 8:30 am was a nice surprise. I think it made my day more enjoyable and exciting. 
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>I think the work was a little less today just because I didn’t have as much homework from my other classes, thus I can parse out my homework and really get more work done without just grinding the entire day.
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>I don’t think anything surprised me, but i did learn of a chicken wing dissection that I have on Monday so I can prepare for it beforehand.
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>Honestly, I reached flow state today and I am excited for the weekend, so getting everything done is really exciting for me. I enjoyed the band outside my math class and it really helped me focus a lot more. 
