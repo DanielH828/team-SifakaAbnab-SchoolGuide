@@ -449,3 +449,303 @@ Were there any experiences in your classes today that you would have liked to be
 
 Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
 <br>Honestly, I reached flow state today and I am excited for the weekend, so getting everything done is really exciting for me. I enjoyed the band outside my math class and it really helped me focus a lot more. 
+
+## PERSON 10
+How was your experience with your classes today? Was there anything that stood out?
+<br>Normal. No.
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>It was the same. Neutral.
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>Standard. 
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>No.
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>Nothing did. I didn’t enjoy anything either
+
+----
+
+How was your experience with your classes today? Was there anything that stood out?
+<br>It was mostly uneventful. I had a timed write in English today.
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>Still the same. Neutral. 
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>Average
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>I would’ve liked a heads up on what the prompt was
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>Nothing hindered it. I didn’t enjoy anything again.
+
+----
+
+How was your experience with your classes today? Was there anything that stood out?
+<br>Uneventful
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>It is the same as it always has been
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>It was less than yesterday
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>No
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>No
+
+## PERSON 11
+How was your experience with your classes today? Was there anything that stood out?
+<br>Today was productive. I began a new unit in Math.
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>It was largely the same as what I expected, which I consider a positive
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>Quite a bit
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>Not really.
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>I thought the lecture in Math was boring and the teacher was little annoying
+
+----
+
+How was your experience with your classes today? Was there anything that stood out?
+<br>Considerably better. I got an A on my essay.
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>Exceeded expectations. Good.
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>It was about average. I can’t say that there was anything new.
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>Not especially. I felt prepared today.
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>Nothing hindered it. I enjoyed getting a good grade.
+
+----
+
+How was your experience with your classes today? Was there anything that stood out?
+<br>Today was not as inspiring I would say. I had a substitute in Spanish and we didn’t do anything.
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>It was alright. Maybe slightly negative.
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>Not very much.
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>Not at all. My teachers informed me fine.
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>The sub didn’t teach anything. I didn’t enjoy  very much today.
+
+## PERSON 12
+How was your experience with your classes today? Was there anything that stood out?
+<br>Pretty chill ngl I didnt have do anything
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>Idk what that means bro
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>Idk It was ok
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>Nah
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>Not really. I was on my phone a lot so i enjoyed that
+
+----
+
+How was your experience with your classes today? Was there anything that stood out?
+<br>It was ok. Not really
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>Uhh it was fine 
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>It was normal
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>Uhh
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>No. i liked lunch
+
+----
+
+How was your experience with your classes today? Was there anything that stood out?
+<br>Decent. No 
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>fine
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>normal
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>no
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>no
+
+## PERSON 13
+How was your experience with your classes today? Was there anything that stood out?
+<br>It was normal. Nothing stood out
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>Idk what original expectations means. I guess neutral
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>It's the same work I usually get from my classes
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>Not really
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>no.
+
+----
+
+How was your experience with your classes today? Was there anything that stood out?
+<br>The same. no
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>neutral
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>Not that much for some reason
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>no
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>no
+
+----
+
+How was your experience with your classes today? Was there anything that stood out?
+<br>The same
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>neutral
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>The same as usual
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>no
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>no
+
+## PERSON 14
+How was your experience with your classes today? Was there anything that stood out?
+<br>My experience with classes today was pretty good. We pretty much had a free period in like 3 of my classes so that was fun.
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>We barely did any work in my classes, so I had a better experience than usual.
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>I had the same amount of homework that I usually get.
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>Not really
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>We didn’t really do any learning today.
+
+----
+
+How was your experience with your classes today? Was there anything that stood out?
+<br>My classes were really boring today. Nothing really stood out
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>My classes were neutral compared to my usual expectations.
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>The same as I often get.
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>I would have liked to know that these classes would be particularly boring.
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>The style of teaching is quite boring and I get unfocused a lot due to that unfortunately.
+
+----
+
+How was your experience with your classes today? Was there anything that stood out?
+<br>My classes were similar to yesterday. Nothing stood out.
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>They were good.
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>I had slightly more homework than usual
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>Not really.
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>Not particularly.
+
+## PERSON 15
+How was your experience with your classes today? Was there anything that stood out?
+<br>Classes were normal. Nothing stood out
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>good
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>It felt very manageable
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>no
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>Not really
+
+----
+
+How was your experience with your classes today? Was there anything that stood out?
+<br>Good. nothing stood out
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>neutral
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>Not that much
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>nope
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>Not really i wish my teachers did less teaching though. Like just let us ask questions if we are confused and then yeah.
+
+----
+
+How was your experience with your classes today? Was there anything that stood out?
+<br>GOOD NOTHING STOOD OUT
+
+How similar to your original expectations were your classes (today specifically)? Is that good, bad, or neutral?
+<br>GOOD
+
+How do you feel about the amount of work you got from your CCA classes today?
+<br>GOOD
+
+Were there any experiences in your classes today that you would have liked to be able to know about or be prepared for beforehand?
+<br>NO
+
+Is there anything that hindered your learning experience? Was there anything about the learning experience you enjoyed? 
+<br>NO
