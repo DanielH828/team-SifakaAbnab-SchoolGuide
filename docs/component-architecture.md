@@ -14,8 +14,8 @@ Firestore Data Model
 Development Responsibilities
 | Person | Responsibilities |
 | --- | --- |
-| Front-end dev | Wire in the components |
-| Back-End Dev | Deal w/ authentication |
+| Front-end dev | Put in the components |
+| Back-End Dev | Deal w/ authentication, Firebase |
 | UX/UI Designer | Make the components look nice (css them) |
 | UX Researcher | Collect info about classes. Help Front/Back-end dev, UX/UI Designer. | 
 | Project Manager | Deal with Git pushes/pulls/conflicts. Help Front/Back-end dev, UX/UI Designer. | 
