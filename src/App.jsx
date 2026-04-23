@@ -17,6 +17,7 @@ function App() {
         subject="Comptuer Science"
         difficulty="4.6/10"
         hwTime="0 Hrs"
+        teachers="Mr. Hare"
       />
     </>
   )
