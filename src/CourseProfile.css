@@ -7,13 +7,20 @@
 
 .boxForProfile {
     background-color: rgb(202, 228, 214);
-    border-radius: 3px;
+    border-radius: 5px;
     padding: 5px 20px 20px 20px;
 }
 
 h1 {
+    padding: 0px;
     grid-column: span 24;
     text-align: center;
+}
+
+h2 {
+    padding: 0px 0px 0px 20px;
+    grid-column: span 24;
+    text-align: left;
 }
 
 #boxDesc {
@@ -42,5 +49,32 @@ h1 {
 }
 
 #backButton {
-    margin: 20px 10px 10px 10px;
+    margin: 10px 20px 10px 10px;
+    padding: 10px;
+} 
+
+#whyCantIGethrToWork {
+    border-top: 2px solid black;
+    grid-column: span 24;
+}
+
+#ratingSubThing {
+    grid-column: span 24;
+    text-align: center;
+}
+
+#boxSubRating {
+    grid-column: span 3;
+}
+
+#boxSubDifficulty {
+    grid-column: span 5;
+}
+
+#boxSubWorkload {
+    grid-column: span 5;
+}
+
+#boxSubReviews {
+    grid-column: span 11;
 }
