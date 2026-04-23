@@ -1,0 +1,46 @@
+#theCourseProfileOne {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 20px;
+    text-align: left;
+}
+
+.boxForProfile {
+    background-color: rgb(202, 228, 214);
+    border-radius: 3px;
+    padding: 5px 20px 20px 20px;
+}
+
+h1 {
+    grid-column: span 24;
+    text-align: center;
+}
+
+#boxDesc {
+    grid-column: span 10;
+    grid-row: span 3;
+}
+
+#boxPrereqs {
+    grid-column: span 14;
+}
+
+#boxSubject {
+    grid-column: span 14;
+}
+
+#boxDifficulty {
+    grid-column: span 4;
+}
+
+#boxHWTime {
+    grid-column: span 4;
+}
+
+#boxTeachers {
+    grid-column: span 6;
+}
+
+#backButton {
+    margin: 20px 10px 10px 10px;
+}
