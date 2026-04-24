@@ -24,28 +24,28 @@ h2 {
 }
 
 #boxDesc {
-    grid-column: span 10;
+    grid-column: span 6;
     grid-row: span 3;
 }
 
 #boxPrereqs {
-    grid-column: span 14;
+    grid-column: span 18;
 }
 
 #boxSubject {
-    grid-column: span 14;
+    grid-column: span 8;
 }
 
 #boxDifficulty {
-    grid-column: span 4;
+    grid-column: span 9;
 }
 
 #boxHWTime {
-    grid-column: span 4;
+    grid-column: span 9;
 }
 
 #boxTeachers {
-    grid-column: span 6;
+    grid-column: span 10;
 }
 
 #backButton {
@@ -78,3 +78,5 @@ h2 {
 #boxSubReviews {
     grid-column: span 11;
 }
+
+

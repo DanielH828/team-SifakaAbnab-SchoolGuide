@@ -1,0 +1,34 @@
+#commentBox {
+    background-color: rgb(202, 228, 214);
+    padding: 15px 20px;
+    border-radius: 5px;
+    margin: 20px 0px 0px 0px;
+}
+
+#commentHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    align-items: left;
+    gap: 20px;
+}
+
+#commentOnTheLeft {
+    display: flex;
+    align-items: left;
+    gap: 20px;
+}
+
+#commentOnTheRight {
+    display: flex;
+    gap: 20px;
+}
+
+#commentPicture {
+    height: 30px;
+}
+
+#commentReview {
+    align-items: left;
+    margin: 0;
+}
