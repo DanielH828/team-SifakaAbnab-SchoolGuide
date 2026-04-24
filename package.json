@@ -3,12 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://DanielH828.github.io/team-SifakaAbnab-SchoolGuide",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },  
   "dependencies": {
     "firebase": "^12.12.0",
     "react": "^19.2.5",
