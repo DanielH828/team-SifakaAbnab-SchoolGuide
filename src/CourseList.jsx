@@ -1,6 +1,7 @@
 import './CourseList.css';
 import ListCard from './ListCard.jsx';
 import { useState } from 'react';
+import { StrictMode } from 'react';
 
 
 

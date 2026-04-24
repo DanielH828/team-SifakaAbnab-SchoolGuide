@@ -1,7 +1,7 @@
 import './CourseProfile.css'
 import { useState } from 'react'
 
-function CourseProfile({courseName, courseDesc, prereqs, subject, difficulty, hwTime, teachers}) {
+function CourseProfile({courseName, courseDesc, prereqs, subject, difficulty, hwTime, teachers, setPage}) {
     return(
         <div id="theCourseProfileOne">
             <button id="backButton" onClick={() => setPage('courseList')}>Back</button>
