@@ -4,7 +4,7 @@ import { useState } from 'react'
 function CourseProfile({courseName, courseDesc, prereqs, subject, difficulty, hwTime, teachers}) {
     return(
         <div id="theCourseProfileOne">
-            <button id="backButton">Back</button>
+            <button id="backButton" onClick={() => setPage('courseList')}>Back</button>
             <h1>{courseName}</h1>
             <div className='boxForProfile' id='boxDesc'>
                 <h3>Description:</h3>
