@@ -9,7 +9,7 @@ function CourseList({setPage}){
     return(
         <>
         <StrictMode>
-            <ListCard courseName='Filler Course Name' courseDescription='get from firebase'
+            <ListCard courseName2='Filler Course Name' courseDescription='get from firebase'
             difficulty='1/10' workload='0min' onClick={() => setPage("courseProfile")}/>
         </StrictMode>
         </>
