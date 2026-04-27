@@ -8,7 +8,7 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-  const [page, setPage] = useState("")
+  const [page, setPage] = useState("courseProfile")
 
   return (
     <>
@@ -23,6 +23,7 @@ function App() {
         teachers="Mr. Hare"
       />
       {page === "courseList" && <CourseList />}
+      {page === "courseProfile" && <CourseProfile />}
     </>
   )
 }
