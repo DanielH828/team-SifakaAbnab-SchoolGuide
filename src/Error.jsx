@@ -1,21 +1,20 @@
 import React from 'react';
-import 'Error.css';
-import errorlogo from 'errorlogo.png';
+import'./Error.css';
+import errorlogo from './assets/errorlogo.png';
+import Errortext from './assets/Errortext.png';
 
 function Error() {
     return (
-      <div className="error-container">
+      <div className="container">
         <main className="error-content">
           <div className="logo-wrapper">
-            <img src={errorlogo} alt="404 Error Logo" className="error-logo" />
+            <img src={errorlogo} className="error-logo"></img>
           </div>
           
           <h1 className="error-title">ERROR – Not Found</h1>
-          
-          <p className="error-message">
-            Sorry, the page you tried to open could not be found.<br />
-            Contact your local Sifaka Lemur for assistance.
-          </p>
+          <div className="logo-wrapper">
+            <img src = {Errortext} className ="error-text"></img>
+          </div>
         </main>
       </div>
     );
