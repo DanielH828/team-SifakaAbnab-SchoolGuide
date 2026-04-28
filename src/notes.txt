@@ -1,0 +1,57 @@
+#commentBox {
+    background-color: rgb(202, 228, 214);
+    padding: 10px;
+    margin: 20px 0px 20px 0px;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 20px;
+} 
+
+#commentPicture{
+    grid-column: 1;
+}
+
+#commentName {
+    grid-column: 2;
+}
+
+#commentDiff, #commentWorkload {
+    grid-column: 2;
+}
+
+#commentReview {
+    grid-column: 24;
+}
+
+#commentEmptySpace{
+    grid-column: 17;
+}
+
+_____________________
+
+#commentBox {
+    background-color: rgb(202, 228, 214);
+    padding: 10px;
+    margin: 20px 0px 20px 0px;
+    border-radius: 5px;
+    display: flex;
+    height: 100%;
+} 
+
+#commentBox p {
+    display: inline;
+    padding: 10px;
+}
+
+#commentBox img {
+    display: inline;
+    padding: 10px;
+    text-align: left;
+    height: 40px;
+}
+
+#commentReview {
+    display: block;
+    width: 100%;
+}

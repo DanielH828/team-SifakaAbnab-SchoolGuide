@@ -1,0 +1,35 @@
+.error-container {
+    background-color: #fdfae1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .error-content {
+    text-align: center;
+    color: #4a4a4a;
+    max-width: 600px;
+  }
+  
+  .error-logo {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+  }
+  
+  .error-title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3rem;
+    margin: 0 0 20px 0;
+    letter-spacing: 1px;
+  }
+  
+  .error-message {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    font-weight: bold;
+  }
