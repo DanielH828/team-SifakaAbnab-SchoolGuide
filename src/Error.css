@@ -32,20 +32,24 @@
   }
   
   .error-logo {
-    max-width: 100%;
-    height: auto;
+    width: auto;
+    max-height: 95%;
+    margin: -100px 0 0 0;
+    justify-self: center;
   }
   
   .error-title {
     font-family: 'ZCOOL_KuaiLe';
-    font-size: 4.5rem;
+    font-size: 4.25rem;
     margin: -50px 0 17px 0;
     letter-spacing: 2px;
     color:rgb(80, 109, 87);
     line-height: 4rem;
+    justify-self: center;
   }
   
   .error-text {
     max-width:100%;
     height:auto;
+    justify-self: center;
   }
