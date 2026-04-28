@@ -7,6 +7,7 @@ import CourseList from './CourseList.jsx'
 import './App.css'
 import Navbar from './components/Navbar.jsx'
 
+import Error from './Error.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
