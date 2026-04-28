@@ -14,6 +14,8 @@ function App() {
 
   return (
     <>
+      {page === "courseList" && <CourseList />}
+      {page === "courseProfile" && (
       <Navbar></Navbar>
       <CourseProfile 
         setPage={setPage}
@@ -24,10 +26,9 @@ function App() {
         difficulty="4.6/10"
         hwTime="0 Hrs"
         teachers="Mr. Hare"
-      />
-      {page === "courseList" && <CourseList />}
-      {page === "courseProfile" && <CourseProfile />}
-    </>
+      />)}
+      
+      </>
   )
 }
 
