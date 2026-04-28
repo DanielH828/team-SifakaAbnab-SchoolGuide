@@ -6,18 +6,20 @@ import CourseProfile from './CourseProfile.jsx'
 import CourseList from './CourseList.jsx'
 import './App.css'
 import Navbar from './components/Navbar.jsx'
+import Homepage from './components/Homepage.jsx'
 
 import Error from './Error.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
-  const [page, setPage] = useState("courseProfile")
+  const [page, setPage] = useState("homepage")
 
   return (
     <>
+      <Navbar></Navbar>
+      {page === "homepage" && <Homepage />}
       {page === "courseList" && <CourseList />}
       {page === "courseProfile" && (
-      <Navbar></Navbar>
       <CourseProfile 
         setPage={setPage}
         courseName="Human Computer Interactions" 
