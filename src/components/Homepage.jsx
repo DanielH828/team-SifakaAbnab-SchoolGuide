@@ -14,6 +14,7 @@ import {
   Users,
   LayoutGrid,
 } from 'lucide-react'
+import profileOverlay from '../ProfileOverlay'
 
 const categories = [
   { label: 'Mathematics', Icon: Calculator },
@@ -80,7 +81,7 @@ export default function Homepage() {
             >
               Sign up
             </a>
-            <button
+            <button onClick={() => StereoPannerNode(true)}
               type="button"
               aria-label="Account"
               className="grid size-10 shrink-0 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20 sm:size-12"
