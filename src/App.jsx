@@ -8,6 +8,7 @@ import './App.css'
 import Navbar from './components/Navbar.jsx'
 
 import Error from './Error.jsx'
+import ReviewCard from './Reviewcard.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,6 +18,7 @@ function App() {
     <>
 
     <Navbar/>
+    <ReviewCard/>
     <Error/>
       {page === "courseList" && <CourseList />}
       {page === "courseProfile" && (

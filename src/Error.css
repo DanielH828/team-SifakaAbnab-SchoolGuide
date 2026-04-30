@@ -3,11 +3,20 @@
   src: url('./assets/fonts/ZCOOLKuaiLe-Regular.ttf') format('truetype');
 }
 
+@keyframes color-cycle {
+  0%   { color: #ff0000; } /* Red */
+  33%  { color: #00ff00; } /* Green */
+  66%  { color: #0000ff; } /* Blue */
+  100% { color: #ff0000; } /* Back to Red for smooth looping */
+}
+
+
 .container {
   width: 100%;
   display: flex;
   flex-direction: column;
   background-color: #fff8bc;
+  animation: color-cycle 0.5s infinite linear;
   min-height: 100vh;
   align-items: center;
   justify-content: center;
@@ -43,7 +52,8 @@
     font-size: 4.25rem;
     margin: -50px 0 17px 0;
     letter-spacing: 2px;
-    color:rgb(80, 109, 87);
+    /*color:rgb(80, 109, 87);*/
+    animation: color-cycle 100s infinite linear;
     line-height: 4rem;
     justify-self: center;
   }
