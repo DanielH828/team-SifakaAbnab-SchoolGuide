@@ -7,10 +7,21 @@ import { useState } from 'react';
 function CourseList({setPage}){
     return(
         <>
-        <StrictMode>
-            <ListCard courseName='Filler Course Name' courseDescription='get from firebase'
-            difficulty='1/10' workload='0min' onClick={() => setPage("courseProfile")}/>
-        </StrictMode>
+            <div className='filterThing'>
+             <li>Math</li>
+             <li>English</li>
+             <li>Science</li>
+             <li>Phys Ed</li>
+             <li>Practical Arts</li>
+             <li>Social Studies</li>
+             <li>Arts</li>
+             <li>Languages</li>
+             <li>All</li>
+            </div>
+            <div className='listCard'>
+             <ListCard courseName2='Filler Course Name' courseDescription='get from firebase'
+             difficulty='1/10' workload='0min' onClick={() => setPage("courseProfile")}/>
+            </div>
         </>
 
 

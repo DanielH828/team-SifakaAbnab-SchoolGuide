@@ -2,7 +2,7 @@ import './CourseProfile.css'
 import CommentForCourseProfile from './CommentForCourseProfile.jsx';
 import { useState } from 'react'
 
-function CourseProfile({courseName, courseDesc, prereqs, subject, difficulty, hwTime, teachers}) {
+function CourseProfile({courseName, courseDesc, prereqs, subject, difficulty, hwTime, teachers, setPage}) {
     return(
         <div>
         <div id="theCourseProfileOne">

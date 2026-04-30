@@ -1,35 +1,51 @@
+@font-face {
+  font-family: 'ZCOOL_KuaiLe';
+  src: url('./assets/fonts/ZCOOLKuaiLe-Regular.ttf') format('truetype');
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff8bc;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  box-sizing: border-box;
+}
+
+@media (max-width: 2000px) {
+  .container {
+    flex-direction: column; /* Stacks items vertically on small screens */
+  }
+}
+
 .error-container {
-    background-color: #fdfae1;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
     box-sizing: border-box;
   }
   
   .error-content {
     text-align: center;
     color: #4a4a4a;
-    max-width: 600px;
+    max-width: 700px;
   }
   
   .error-logo {
     max-width: 100%;
     height: auto;
-    margin-bottom: 30px;
   }
   
   .error-title {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 3rem;
-    margin: 0 0 20px 0;
-    letter-spacing: 1px;
+    font-family: 'ZCOOL_KuaiLe';
+    font-size: 4.5rem;
+    margin: 0 0 15px 0;
+    letter-spacing: 2px;
+    color:rgb(80, 109, 87);
+    line-height: 4rem;
   }
   
-  .error-message {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.2rem;
-    line-height: 1.5;
-    font-weight: bold;
+  .error-text {
+    max-width:100%;
+    height:auto;
   }
