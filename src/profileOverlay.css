@@ -1,0 +1,12 @@
+.overlay-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 10rem;
+    height: 10rem;
+    background-color: rgb(92, 148, 140);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}

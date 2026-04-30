@@ -12,14 +12,14 @@ import Error from './Error.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
-  const [page, setPage] = useState("homepage")
+  const [page, setPage] = useState("Homepage")
 
   return (
     <>
       <Navbar></Navbar>
-      {page === "homepage" && <Homepage />}
-      {page === "courseList" && <CourseList />}
-      {page === "courseProfile" && (
+      {page === "Homepage" && <Homepage />}
+      {page === "CourseList" && <CourseList />}
+      {page === "ProfileOverlay" && <ProfileOverlay />}
       <CourseProfile 
         setPage={setPage}
         courseName="Human Computer Interactions" 
@@ -29,8 +29,7 @@ function App() {
         difficulty="4.6/10"
         hwTime="0 Hrs"
         teachers="Mr. Hare"
-      />)}
-      
+      />
       </>
   )
 }
