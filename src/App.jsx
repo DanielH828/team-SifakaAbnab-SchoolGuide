@@ -16,20 +16,23 @@ function App() {
   return (
     <>
       {page === "courseList" && <CourseList />}
-      {page === "courseProfile" && (
-      <Navbar></Navbar>
-      <CourseProfile 
-        setPage={setPage}
-        courseName="Human Computer Interactions" 
-        courseDesc="fake course derection" 
-        prereqs="Computer Science Foundations or Intro to Game Design" 
-        subject="Comptuer Science"
-        difficulty="4.6/10"
-        hwTime="0 Hrs"
-        teachers="Mr. Hare"
-      />)}
       
-      </>
+      {page === "courseProfile" && (
+        <> {/* Added this Fragment to wrap the two components */}
+          <Navbar />
+          <CourseProfile 
+            setPage={setPage}
+            courseName="Human Computer Interactions" 
+            courseDesc="fake course derection" 
+            prereqs="Computer Science Foundations or Intro to Game Design" 
+            subject="Computer Science"
+            difficulty="4.6/10"
+            hwTime="0 Hrs"
+            teachers="Mr. Hare"
+          />
+        </>
+      )}
+    </>
   )
 }
 
