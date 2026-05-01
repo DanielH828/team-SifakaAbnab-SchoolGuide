@@ -1,23 +1,18 @@
 import { useState } from 'react';
-import App from './App.jsx';
+import { createPortal } from 'react-dom';
 
-function profileOverlay(userName) {
-    const [open, setOpen] = useState(false);
-    const toggleOverlay = () => setOpen(!open);
-
-    return (
-        <div style={{ position: 'relative'}}>
-            <Homepage toggleOverlay={toggleOverlay} />
-            {open && (
+function ProfileOverlay({userName, setPage}) {
+    const overlayContent = (
             <div className="overlay-container">
                  <div className="overlay-content">
                     <h2>{userName}</h2>
-                     <button className="ProfileSettings" onClick={() => setPage('error')}></button>
+                    <button className="ProfileSettings" onClick={() => setPage('error')}>Profile Settings</button>
                 </div>
-            </div>)
-            }
-        </div>
+            </div>
     )
+
+return createPortal(overlayContent, document.body)
+
 }
 
-export default profileOverlay
+export default ProfileOverlay

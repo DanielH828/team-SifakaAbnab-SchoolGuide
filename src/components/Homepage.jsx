@@ -14,8 +14,6 @@ import {
   Users,
   LayoutGrid,
 } from 'lucide-react'
-import profileOverlay from '../ProfileOverlay.jsx'
-import App from '../App.jsx'
 
 const categories = [
   { label: 'Mathematics', Icon: Calculator },
