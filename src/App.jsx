@@ -20,10 +20,11 @@ function App() {
   return (
     <>
       <Navbar></Navbar>
+      <CourseList />
       {page === "Homepage" && <Homepage toggleOverlay={toggleOverlay} />}
       {page === "CourseList" && <CourseList />}
       {page === "error" && <Error />}
-      <CourseProfile 
+      {page === "CourseProfile" && <CourseProfile 
         setPage={setPage}
         courseName="Human Computer Interactions" 
         courseDesc="fake course derection" 
@@ -32,9 +33,9 @@ function App() {
         difficulty="4.6/10"
         hwTime="0 Hrs"
         teachers="Mr. Hare"
-      />
+      />}
       {open && <ProfileOverlay userName='UserName' setPage={setPage}/>}
-      </>
+    </>
   )
 }
 
