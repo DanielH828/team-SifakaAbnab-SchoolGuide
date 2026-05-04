@@ -10,6 +10,7 @@ import Homepage from './components/Homepage.jsx'
 import ProfileOverlay from './ProfileOverlay.jsx'
 
 import Error from './Error.jsx'
+import ReviewCard from './Reviewcard.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -33,7 +34,8 @@ function App() {
         hwTime="0 Hrs"
         teachers="Mr. Hare"
       />
-      {open && <ProfileOverlay userName='UserName' setPage={setPage}/>}
+      )}
+      
       </>
   )
 }
