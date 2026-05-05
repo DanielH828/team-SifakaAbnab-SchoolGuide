@@ -36,8 +36,8 @@ function ListCard({courseId, courseName2, courseDescription, image, difficulty, 
             <h2>{theSpeficClass ? ( <p>{theSpeficClass.class}</p> ) : ( <p>Loading or document not found...</p> )}</h2>
             <p>{theSpeficClass ? ( <p>{theSpeficClass.desc}</p> ) : ( <p>Loading or document not found...</p> )}</p>
             {/*make workload and difficulty receive user responses later...*/}
-            <p>{workload}</p>
-            <p>{difficulty}</p>
+            <p className='load'>{workload}</p>
+            <p className='diffic'>{difficulty}</p>
         </div>
     )
 }

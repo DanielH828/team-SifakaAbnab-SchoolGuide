@@ -50,7 +50,7 @@ function SearchField({ className = '' }) {
   )
 }
 
-export default function Homepage() {
+export default function Homepage({ toggleOverlay }) {
   return (
     <div className="font-ui min-h-svh bg-white text-sif-green">
       <header className="sticky top-0 z-10 bg-sif-green">
@@ -80,7 +80,7 @@ export default function Homepage() {
             >
               Sign up
             </a>
-            <button
+            <button onClick={() => toggleOverlay()}
               type="button"
               aria-label="Account"
               className="grid size-10 shrink-0 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20 sm:size-12"
