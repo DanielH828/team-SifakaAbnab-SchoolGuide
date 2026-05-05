@@ -22,13 +22,7 @@ function App() {
           <Navbar />
           <CourseProfile 
             setPage={setPage}
-            courseName="Human Computer Interactions" 
-            courseDesc="fake course derection" 
-            prereqs="Computer Science Foundations or Intro to Game Design" 
-            subject="Computer Science"
-            difficulty="4.6/10"
-            hwTime="0 Hrs"
-            teachers="Mr. Hare"
+            courseId = "3"
           />
         </>
       )}

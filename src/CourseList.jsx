@@ -19,7 +19,7 @@ function CourseList({setPage}){
              <li>All</li>
             </div>
             <div className='listCard'>
-             <ListCard courseName2='Filler Course Name' courseDescription='get from firebase'
+             <ListCard courseId="4" courseName2='Filler Course Name' courseDescription='get from firebase'
              difficulty='1/10' workload='0min' onClick={() => setPage("courseProfile")}/>
             </div>
         </>
