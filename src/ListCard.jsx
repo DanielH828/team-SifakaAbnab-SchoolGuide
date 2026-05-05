@@ -10,9 +10,8 @@ import {
     getFirestore
 } from "firebase/firestore"
 
-function ListCard({courseId, courseName2, courseDescription, image, difficulty, workload}){
+function ListCard({courseId, difficulty, workload}){
     const [data, setData] = useState([]);
-    const askdjf = courseId;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -28,8 +27,8 @@ function ListCard({courseId, courseName2, courseDescription, image, difficulty, 
         fetchData();
     }, []);
 
-    // Find the document with ID "2"
-    const theSpeficClass = data.find((doc) => doc.id === askdjf);
+    // Find the document with ID provided
+    const theSpeficClass = data.find((doc) => doc.id === courseId);
     
     return(
         <div>

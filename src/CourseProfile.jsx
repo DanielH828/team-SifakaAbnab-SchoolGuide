@@ -12,9 +12,8 @@ import {
     getFirestore
 } from "firebase/firestore"
 
-function CourseProfile({courseId, courseName, courseDesc, prereqs, subject, difficulty, hwTime, teachers, setPage}) {
+function CourseProfile({courseId, difficulty, hwTime, setPage}) {
     const [data, setData] = useState([]);
-    const askdjf = courseId;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -30,8 +29,8 @@ function CourseProfile({courseId, courseName, courseDesc, prereqs, subject, diff
         fetchData();
     }, []);
 
-    // Find the document with ID "2"
-    const theSpeficClass = data.find((doc) => doc.id === askdjf);
+    // Find the document with ID provided
+    const theSpeficClass = data.find((doc) => doc.id === courseId);
 
     return(
         <div>
