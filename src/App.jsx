@@ -20,11 +20,10 @@ function App() {
   return (
     <>
       <Navbar></Navbar>
-      <CourseList />
       {page === "Homepage" && <Homepage toggleOverlay={toggleOverlay} />}
-      {page === "CourseList" && <CourseList />}
+      {page === "CourseList" && <CourseList  setPage={setPage} />}
       {page === "error" && <Error />}
-      {page === "CourseProfile" && <CourseProfile 
+      {page === "CourseProfile" && <CourseProfile
         setPage={setPage}
         courseName="Human Computer Interactions" 
         courseDesc="fake course derection" 

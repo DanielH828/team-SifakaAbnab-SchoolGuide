@@ -29,9 +29,10 @@ function CourseList({setPage}){
         <>
             <div className="createClassList">
                 {classes.map((item) => (
-                    <ClassCard 
+                    <ListCard 
                         key={item.id}
-                        courseName2={item.name}
+                        courseName2={item.class}
+                        onClick={() => setPage("CourseProfile")}
                     />
              ))}
             </div>
@@ -47,8 +48,6 @@ function CourseList({setPage}){
              <li>Languages</li>
             </div>
             <div className='listCard'>
-             <ListCard courseName2='Filler Course Name' courseDescription='get from firebase'
-             difficulty='1/10' workload='0min' onClick={() => setPage("courseProfile")}/>
             </div>
         </>
 
