@@ -16,7 +16,6 @@ function CourseList({setPage}){
              <li>Social Studies</li>
              <li>Arts</li>
              <li>Languages</li>
-             <li>All</li>
             </div>
             <div className='listCard'>
              <ListCard courseId="4" courseName2='Filler Course Name' courseDescription='get from firebase'

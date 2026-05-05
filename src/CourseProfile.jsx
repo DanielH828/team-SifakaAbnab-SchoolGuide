@@ -77,18 +77,7 @@ function CourseProfile({courseId, difficulty, hwTime, setPage}) {
             <p id="boxSubWorkload">Workload: {hwTime}</p>
             <button id="boxSubReviews">Add Review</button>
         </div>
-            <CommentForCourseProfile 
-                name="Danny He"
-                reviewedDiff="1/10"
-                reviewedWorkload="0 Mins"
-                review="This was a very cool class. lksadjflsajflksajf"
-            />
-            <CommentForCourseProfile 
-                name="Tyler Levoe"
-                reviewedDiff="3/10"
-                reviewedWorkload="0 Mins"
-                review="this is like the bst class in the computer science classes its really good and i like that. i appreciate this class for being such a positive and good class. thankn fo making this class thanks"
-            />
+            <Reviewcard></Reviewcard>
         </div>
     )
 }
