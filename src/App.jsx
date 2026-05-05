@@ -24,16 +24,15 @@ function App() {
       {page === "Homepage" && <Homepage toggleOverlay={toggleOverlay} />}
       {page === "CourseList" && <CourseList />}
       {page === "error" && <Error />}
-      <CourseProfile 
-        setPage={setPage}
-        courseName="Human Computer Interactions" 
-        courseDesc="fake course derection" 
-        prereqs="Computer Science Foundations or Intro to Game Design" 
-        subject="Comptuer Science"
-        difficulty="4.6/10"
-        hwTime="0 Hrs"
-        teachers="Mr. Hare"
-      />
+      
+      {page === "courseProfile" && (
+        <> {/* Added this Fragment to wrap the two components */}
+          <Navbar />
+          <CourseProfile 
+            setPage={setPage}
+            courseId = "3"
+          />
+        </>
       )}
       
       </>

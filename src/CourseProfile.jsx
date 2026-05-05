@@ -1,33 +1,62 @@
 import './CourseProfile.css'
 import CommentForCourseProfile from './CommentForCourseProfile.jsx';
-import { useState } from 'react';
-import Reviewcard from './Reviewcard.jsx';
+import { useState, useEffect } from 'react';
+import {db} from "./firebase";
+import {
+    doc,
+    collection,
+    addDoc,
+    getDoc,
+    getDocs,
+    serverTimestamp,
+    getFirestore
+} from "firebase/firestore"
 
-function CourseProfile({courseName, courseDesc, prereqs, subject, difficulty, hwTime, teachers, setPage}) {
+function CourseProfile({courseId, courseName, courseDesc, prereqs, subject, difficulty, hwTime, teachers, setPage}) {
+    const [data, setData] = useState([]);
+    const askdjf = courseId;
+
+    useEffect(() => {
+        const fetchData = async () => {
+        const querySnapshot = await getDocs(collection(db, "placeholderID"));
+        // Map docs with id
+        const loaded = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+        }));
+        setData(loaded);
+        };
+
+        fetchData();
+    }, []);
+
+    // Find the document with ID "2"
+    const theSpeficClass = data.find((doc) => doc.id === askdjf);
+
     return(
         <div>
         <div id="theCourseProfileOne">
             <button id="backButton" onClick={() => setPage('courseList')}>Back</button>
-            <h1>{courseName}</h1>
+            <h1>{theSpeficClass ? ( <p>{theSpeficClass.class}</p> ) : ( <p>Loading or document not found...</p> )}</h1>
 
             <div className='boxForProfile' id='boxDesc'>
                 <h3>Description:</h3>
-                <p>{courseDesc}</p>
+                <p>{theSpeficClass ? ( <p>{theSpeficClass.desc}</p> ) : ( <p>Loading or document not found...</p> )}</p>
             </div>
 
             <div className='boxForProfile' id='boxPrereqs'>
                 <h3>Prereqs:</h3>
-                <p>{prereqs}</p>
+                <p>{theSpeficClass ? ( <p>{theSpeficClass.prereq}</p> ) : ( <p>Loading or document not found...</p> )}</p>
             </div>
 
             <div className='boxForProfile' id='boxSubject'>
                 <h3>Subject:</h3>
-                <p>{subject}</p>
+                <p>{theSpeficClass ? ( <p>{theSpeficClass.subject}</p> ) : ( <p>Loading or document not found...</p> )}</p>
             </div>
 
             <div className='boxForProfile' id='boxTeachers'>
                 <h3>Teachers:</h3>
-                <p>{teachers}</p>
+                <p>{theSpeficClass ? ( <p>{theSpeficClass.teachers}</p> ) : ( <p>Loading or document not found...</p> )}</p>
             </div>
 
             <div className='boxForProfile' id='boxDifficulty'>
