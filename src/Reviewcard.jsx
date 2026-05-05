@@ -1,27 +1,46 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+// 1. Import Firestore methods and your DB config
+import { db } from './firebase'; 
+import { collection, addDoc, onSnapshot, query, orderBy, updateDoc, doc } from 'firebase/firestore';
 
 const ReviewCard = () => {
   const [reviews, setReviews] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [newReview, setNewReview] = useState({ text: '', difficulty: 0, workload: 0, stress: 0, enjoyment: 0 });
 
+  // 2. Real-time Sync: Fetch reviews from Firestore on mount
+  useEffect(() => {
+    const q = query(collection(db, "reviews"), orderBy("createdAt", "desc"));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const reviewData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setReviews(reviewData);
+    });
+    return () => unsubscribe();
+  }, []);
+
   const averages = useMemo(() => {
     if (reviews.length === 0) return { difficulty: 0, workload: 0, stress: 0, enjoyment: 0 };
     const sums = reviews.reduce((acc, r) => ({
-      difficulty: acc.difficulty + r.scores.difficulty,
-      workload: acc.workload + r.scores.workload,
-      stress: acc.stress + r.scores.stress,
-      enjoyment: acc.enjoyment + r.scores.enjoyment,
+      difficulty: acc.difficulty + (r.scores?.difficulty || 0),
+      workload: acc.workload + (r.scores?.workload || 0),
+      stress: acc.stress + (r.scores?.stress || 0),
+      enjoyment: acc.enjoyment + (r.scores?.enjoyment || 0),
     }), { difficulty: 0, workload: 0, stress: 0, enjoyment: 0 });
+
     return Object.fromEntries(Object.entries(sums).map(([k, v]) => [k, (v / reviews.length).toFixed(1)]));
   }, [reviews]);
 
-  const handleVote = (id, delta) => {
-    setReviews(prev => prev.map(r => r.id === id ? { ...r, votes: r.votes + delta } : r));
+  // 3. Update Firestore for Voting
+  const handleVote = async (id, delta) => {
+    const reviewRef = doc(db, "reviews", id);
+    const review = reviews.find(r => r.id === id);
+    await updateDoc(reviewRef, {
+      votes: (review.votes || 0) + delta
+    });
   };
 
-  const submitReview = () => {
-    // Convert any empty strings back to numbers for the final save
+  // 4. Submit to Firestore
+  const submitReview = async () => {
     const scores = {
       difficulty: Number(newReview.difficulty) || 0,
       workload: Number(newReview.workload) || 0,
@@ -29,9 +48,20 @@ const ReviewCard = () => {
       enjoyment: Number(newReview.enjoyment) || 0,
     };
 
-    setReviews([...reviews, { id: Date.now(), user: 'Username', text: newReview.text, scores, votes: 0 }]);
-    setShowForm(false);
-    setNewReview({ text: '', difficulty: 0, workload: 0, stress: 0, enjoyment: 0 });
+    try {
+      await addDoc(collection(db, "reviews"), {
+        user: 'Username',
+        text: newReview.text,
+        scores: scores,
+        votes: 0,
+        createdAt: new Date()
+      });
+
+      setShowForm(false);
+      setNewReview({ text: '', difficulty: 0, workload: 0, stress: 0, enjoyment: 0 });
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   };
 
   return (
@@ -55,7 +85,7 @@ const ReviewCard = () => {
         <div style={{ backgroundColor: '#f1f3f5', padding: '20px', marginTop: '15px', borderRadius: '8px' }}>
           <textarea 
             placeholder="Insert text here... Please be respectful." 
-            value={newReview.text}
+            value={newReview.text} 
             onChange={(e) => setNewReview({...newReview, text: e.target.value})} 
             style={{ width: '100%', marginBottom: '10px', padding: '10px' }} 
           />
@@ -69,19 +99,13 @@ const ReviewCard = () => {
                   style={{ width: '60px', padding: '5px' }} 
                   onChange={(e) => {
                     const rawValue = e.target.value;
-                    
-                    // Allow the user to clear the box (empty string) so they can type a new number
                     if (rawValue === '') {
                       setNewReview({ ...newReview, [attr]: '' });
                       return;
                     }
-
                     let val = parseFloat(rawValue);
-                    
-                    // The Snap Logic: Forces 0 or 10 if they type outside bounds
                     if (val < 0) val = 0;
                     if (val > 10) val = 10;
-                    
                     setNewReview({ ...newReview, [attr]: isNaN(val) ? 0 : val });
                   }} 
                 />
@@ -101,10 +125,10 @@ const ReviewCard = () => {
           <div style={{ fontWeight: 'bold', color: '#ff0055' }}>{rev.user}</div>
           <p>{rev.text}</p>
           <div style={{ fontSize: '0.9em', color: '#555' }}>
-            Difficulty: {rev.scores.difficulty}/10 | Workload: {rev.scores.workload}/10 | Stress: {rev.scores.stress}/10 | Enjoyment: {rev.scores.enjoyment}/10
+            Difficulty: {rev.scores?.difficulty}/10 | Workload: {rev.scores?.workload}/10 | Stress: {rev.scores?.stress}/10 | Enjoyment: {rev.scores?.enjoyment}/10
           </div>
           <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <button onClick={() => handleVote(rev.id, 1)}>👍 {rev.votes}</button>
+            <button onClick={() => handleVote(rev.id, 1)}>👍 {rev.votes || 0}</button>
             <button onClick={() => handleVote(rev.id, -1)}>👎</button>
           </div>
         </div>
