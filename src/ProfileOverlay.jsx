@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { createPortal } from 'react-dom';
 
 function ProfileOverlay({userName, setPage}) {
