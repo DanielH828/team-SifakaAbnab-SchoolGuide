@@ -1,13 +1,11 @@
 import './CourseProfile.css'
-import CommentForCourseProfile from './CommentForCourseProfile.jsx';
-import { useState } from 'react';
 import Reviewcard from './Reviewcard.jsx';
 
 function CourseProfile({courseName, courseDesc, prereqs, subject, difficulty, hwTime, teachers, setPage}) {
     return(
         <div>
         <div id="theCourseProfileOne">
-            <button id="backButton" onClick={() => setPage('courseList')}>Back</button>
+            <button id="backButton" onClick={() => setPage('CourseList')}>Back</button>
             <h1>{courseName}</h1>
 
             <div className='boxForProfile' id='boxDesc'>

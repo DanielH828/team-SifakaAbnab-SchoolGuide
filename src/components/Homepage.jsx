@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   Home,
   Search,
@@ -28,29 +29,45 @@ const categories = [
   { label: 'All Classes', Icon: LayoutGrid },
 ]
 
-function SearchField({ className = '' }) {
+function SearchField({ className = '', value, onChange, onSubmit }) {
   return (
-    <div
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        onSubmit()
+      }}
       className={`flex items-center gap-3 rounded-full bg-sif-search px-5 py-3 ${className}`}
     >
       <Search className="size-5 text-sif-green shrink-0" strokeWidth={2.5} />
       <input
         type="search"
         placeholder="Search classes, teachers..."
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
         className="font-ui flex-1 bg-transparent text-base text-sif-green placeholder:text-sif-green/60 outline-none"
       />
       <button
-        type="button"
-        aria-label="Filters"
+        type="submit"
+        aria-label="Search"
         className="shrink-0 cursor-pointer rounded-full p-1 text-sif-green hover:bg-black/5"
       >
         <SlidersHorizontal className="size-5" strokeWidth={2.5} />
       </button>
-    </div>
+    </form>
   )
 }
 
-export default function Homepage({ toggleOverlay }) {
+export default function Homepage({ toggleOverlay, goToCourseList }) {
+  const [query, setQuery] = useState('')
+
+  const submitSearch = () => {
+    goToCourseList({ query: query.trim() })
+  }
+
+  const pickCategory = (label) => {
+    goToCourseList({ category: label === 'All Classes' ? null : label })
+  }
+
   return (
     <div className="font-ui min-h-svh bg-white text-sif-green">
       <header className="sticky top-0 z-10 bg-sif-green">
@@ -64,7 +81,12 @@ export default function Homepage({ toggleOverlay }) {
           </a>
 
           <div className="hidden flex-1 md:block">
-            <SearchField className="mx-auto max-w-2xl" />
+            <SearchField
+              className="mx-auto max-w-2xl"
+              value={query}
+              onChange={setQuery}
+              onSubmit={submitSearch}
+            />
           </div>
 
           <div className="ml-auto flex items-center gap-2 sm:gap-3">
@@ -101,7 +123,12 @@ export default function Homepage({ toggleOverlay }) {
             Also, review classes and see the opinions of your peers.
           </p>
 
-          <SearchField className="mt-8 w-full max-w-3xl md:hidden" />
+          <SearchField
+            className="mt-8 w-full max-w-3xl md:hidden"
+            value={query}
+            onChange={setQuery}
+            onSubmit={submitSearch}
+          />
         </section>
 
         <section className="pt-6 pb-20 sm:pt-10">
@@ -114,6 +141,7 @@ export default function Homepage({ toggleOverlay }) {
               <li key={cat.label}>
                 <button
                   type="button"
+                  onClick={() => pickCategory(cat.label)}
                   className="group flex aspect-[276/229] w-full cursor-pointer flex-col items-center justify-center gap-4 rounded-[15px] bg-sif-mint p-6 text-white transition hover:brightness-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-sif-green/30"
                 >
                   <cat.Icon
