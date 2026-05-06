@@ -3,20 +3,20 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { db } from './firebase'; 
 import { collection, addDoc, onSnapshot, query, orderBy, updateDoc, doc } from 'firebase/firestore';
 
-const ReviewCard = () => {
+const ReviewCard = ({selectedCourse}) => {
   const [reviews, setReviews] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [newReview, setNewReview] = useState({ text: '', difficulty: 0, workload: 0, stress: 0, enjoyment: 0 });
 
   // 2. Real-time Sync: Fetch reviews from Firestore on mount
   useEffect(() => {
-    const q = query(collection(db, "reviews"), orderBy("createdAt", "desc"));
+    const q = query(collection(db, "placeholderID", selectedCourse, "reviews"), orderBy("createdAt", "desc"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const reviewData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setReviews(reviewData);
     });
     return () => unsubscribe();
-  }, []);
+  }, [selectedCourse]);
 
   const averages = useMemo(() => {
     if (reviews.length === 0) return { difficulty: 0, workload: 0, stress: 0, enjoyment: 0 };
@@ -32,7 +32,7 @@ const ReviewCard = () => {
 
   // 3. Update Firestore for Voting
   const handleVote = async (id, delta) => {
-    const reviewRef = doc(db, "reviews", id);
+    const reviewRef = doc(db, "placeholderID", selectedCourse, "reviews", id);
     const review = reviews.find(r => r.id === id);
     await updateDoc(reviewRef, {
       votes: (review.votes || 0) + delta
@@ -49,7 +49,7 @@ const ReviewCard = () => {
     };
 
     try {
-      await addDoc(collection(db, "reviews"), {
+      await addDoc(collection(db, "placeholderID", selectedCourse, "reviews"), {
         user: 'Username',
         text: newReview.text,
         scores: scores,
