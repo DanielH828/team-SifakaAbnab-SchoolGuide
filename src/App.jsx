@@ -29,7 +29,12 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <Navbar 
+        goToCourseList={goToCourseList}
+        toggleOverlay={toggleOverlay}
+        setPage={setPage}
+        />
+      {overlayOpen && <ProfileOverlay userName="Guest" setPage={(p) => { setOverlayOpen(false); setPage(p) }} />}
       {page === 'Homepage' && (
         <Homepage toggleOverlay={toggleOverlay} goToCourseList={goToCourseList} />
       )}
@@ -55,7 +60,6 @@ function App() {
         />
       )}
       {page === 'error' && <Error />}
-      {overlayOpen && <ProfileOverlay userName="Guest" setPage={(p) => { setOverlayOpen(false); setPage(p) }} />}
     </>
   )
 }
