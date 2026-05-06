@@ -1,12 +1,11 @@
 import './CourseProfile.css'
-import CommentForCourseProfile from './CommentForCourseProfile.jsx';
-import { useState } from 'react'
+import Reviewcard from './Reviewcard.jsx';
 
 function CourseProfile({courseName, courseDesc, prereqs, subject, difficulty, hwTime, teachers, setPage}) {
     return(
         <div>
         <div id="theCourseProfileOne">
-            <button id="backButton" onClick={() => setPage('courseList')}>Back</button>
+            <button id="backButton" onClick={() => setPage('CourseList')}>Back</button>
             <h1>{courseName}</h1>
 
             <div className='boxForProfile' id='boxDesc'>
@@ -48,18 +47,7 @@ function CourseProfile({courseName, courseDesc, prereqs, subject, difficulty, hw
             <p id="boxSubWorkload">Workload: {hwTime}</p>
             <button id="boxSubReviews">Add Review</button>
         </div>
-            <CommentForCourseProfile 
-                name="Danny He"
-                reviewedDiff="1/10"
-                reviewedWorkload="0 Mins"
-                review="This was a very cool class. lksadjflsajflksajf"
-            />
-            <CommentForCourseProfile 
-                name="Tyler Levoe"
-                reviewedDiff="3/10"
-                reviewedWorkload="0 Mins"
-                review="this is like the bst class in the computer science classes its really good and i like that. i appreciate this class for being such a positive and good class. thankn fo making this class thanks"
-            />
+            <Reviewcard></Reviewcard>
         </div>
     )
 }

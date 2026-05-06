@@ -1,3 +1,40 @@
+useEffect(() => {
+
+        
+        const docRef = doc(db, "placeholderID", "2"); 
+        
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    // 2. Ensure data.class exists in Firestore
+                    setClassName(docSnap.data().class); 
+                } else {
+                    console.log("Document does not exist");
+                    setClassName("Field not found"); // Set a proper default
+                }
+            } catch (error) {
+                console.error("Error fetching document:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
 #commentBox {
     background-color: rgb(202, 228, 214);
     padding: 10px;
