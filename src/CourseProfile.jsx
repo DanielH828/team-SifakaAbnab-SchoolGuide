@@ -47,7 +47,6 @@ function CourseProfile({courseName, courseDesc, prereqs, subject, difficulty, hw
             <p id="boxSubWorkload">Workload: {hwTime}</p>
             <button id="boxSubReviews">Add Review</button>
         </div>
-            <Reviewcard></Reviewcard>
         </div>
     )
 }
