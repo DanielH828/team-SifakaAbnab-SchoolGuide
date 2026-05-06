@@ -3,7 +3,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { db } from './firebase'; 
 import { collection, addDoc, onSnapshot, query, orderBy, updateDoc, doc } from 'firebase/firestore';
 
-const ReviewCard = (selectedCourse) => {
+const ReviewCard = ({selectedCourse}) => {
   const [reviews, setReviews] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [newReview, setNewReview] = useState({ text: '', difficulty: 0, workload: 0, stress: 0, enjoyment: 0 });
