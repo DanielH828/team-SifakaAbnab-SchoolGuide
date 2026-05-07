@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 // 1. Import Firestore methods and your DB config
 import { db } from './firebase'; 
 import { collection, addDoc, onSnapshot, query, orderBy, updateDoc, doc } from 'firebase/firestore';
+import './Reviewcard.css'
 
 const ReviewCard = () => {
   const [reviews, setReviews] = useState([]);
