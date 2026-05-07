@@ -61,8 +61,9 @@ function Navbar({ goToCourseList, toggleOverlay, setPage }) {
             <button
               type="button"
               className="cursor-pointer rounded-[11px] bg-sif-green-accent px-4 py-2 text-sm font-bold text-white hover:brightness-110 sm:px-5 sm:py-2.5 sm:text-base"
+
             >
-              Log in
+              <GoogleLogin></GoogleLogin>
             </button>
             <a
               href="#"
