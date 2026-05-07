@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { db } from './firebase';
 import { collection, addDoc, onSnapshot, query, orderBy, updateDoc, doc } from 'firebase/firestore';
+import { auth } from './firebase';
 
 // Asset Imports
 import DifficultyIcon from './assets/DifficultyIcon.png';
@@ -23,7 +24,7 @@ const ReviewCard = () => {
       setReviews(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
     });
     return () => unsubscribe();
-  }, []);
+  }, [selectedCourse]);
 
   // Helper: Relative "X time ago"
   const formatTimeAgo = (timestamp) => {
