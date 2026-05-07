@@ -9,17 +9,18 @@ import EnjoymentIcon from './assets/Enjoyment.png';
 import StressIcon from './assets/StressIcon.png'; 
 import WorkloadIcon from './assets/WorkloadIcon.png';
 
-const ReviewCard = () => {
+const ReviewCard = ({ selectedCourse }) => {
   const [reviews, setReviews] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [newReview, setNewReview] = useState({ text: '', difficulty: '', workload: '', stress: '', enjoyment: '' });
   const [userVotes, setUserVotes] = useState({});
+  const courseId = selectedCourse?.id || selectedCourse;
 
   useEffect(() => {
     const savedVotes = JSON.parse(localStorage.getItem('userVotesMap') || '{}');
     setUserVotes(savedVotes);
     
-    const q = query(collection(db, "reviews"), orderBy("createdAt", "desc"));
+    const q = query(collection(db, "reviews", courseId), orderBy("createdAt", "desc"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       setReviews(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
     });
@@ -73,7 +74,7 @@ const ReviewCard = () => {
   const iconMap = { difficulty: DifficultyIcon, workload: WorkloadIcon, stress: StressIcon, enjoyment: EnjoymentIcon };
 
   const handleVote = async (reviewId, voteType) => {
-    const reviewRef = doc(db, "reviews", reviewId);
+    const reviewRef = doc(db, "reviews", courseId, reviewId);
     const review = reviews.find(r => r.id === reviewId);
     const currentVote = userVotes[reviewId];
     let voteChange = currentVote === voteType ? (voteType === 'up' ? -1 : 1) : (currentVote ? (voteType === 'up' ? 2 : -2) : (voteType === 'up' ? 1 : -1));
@@ -89,8 +90,8 @@ const ReviewCard = () => {
 
   const submitReview = async () => {
     try {
-      await addDoc(collection(db, "reviews"), {
-        user: 'Username',
+      await addDoc(collection(db, "reviews", courseId), {
+        user: auth.currentUser?.displayName || 'temporaryguestuserthing',
         text: newReview.text,
         scores: { difficulty: Number(newReview.difficulty), workload: Number(newReview.workload), stress: Number(newReview.stress), enjoyment: Number(newReview.enjoyment) },
         votes: 0, createdAt: new Date()
