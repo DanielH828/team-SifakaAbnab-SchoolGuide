@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { db } from './firebase';
 import { collection, addDoc, onSnapshot, query, orderBy, updateDoc, doc } from 'firebase/firestore';
+import './Reviewcard.css'
 import { auth } from './firebase';
 
 // Asset Imports

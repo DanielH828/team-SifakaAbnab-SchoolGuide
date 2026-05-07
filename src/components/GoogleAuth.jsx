@@ -76,7 +76,7 @@ function GoogleLogin() {
       {/* If user is logged in, show greeting, logout button, and messages */}
       {user ? (
         <div>
-          <button onClick={handleLogout}>Log Out</button>
+          <button className='loginoutbutton' onClick={handleLogout}>Log Out</button>
 
           <ul>
             {messages.map((msg, i) => (
@@ -89,7 +89,7 @@ function GoogleLogin() {
       ) : (
         // If no user is logged in, show login button
         <div>
-          <button onClick={handleLogin}>Log In</button>
+          <button className='loginoutbutton' onClick={handleLogin}>Log In</button>
         </div>
       )}
     </div>
