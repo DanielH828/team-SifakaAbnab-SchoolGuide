@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 // 1. Import Firestore methods and your DB config
 import { db } from './firebase'; 
 import { collection, addDoc, onSnapshot, query, orderBy, updateDoc, doc } from 'firebase/firestore';
+import { auth } from './firebase';
 
 const ReviewCard = ({selectedCourse}) => {
   const [reviews, setReviews] = useState([]);
@@ -50,7 +51,7 @@ const ReviewCard = ({selectedCourse}) => {
 
     try {
       await addDoc(collection(db, "placeholderID", selectedCourse, "reviews"), {
-        user: 'Username',
+        user: auth.currentUser?.displayName || 'temporarydefaultname',
         text: newReview.text,
         scores: scores,
         votes: 0,
