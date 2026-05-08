@@ -41,7 +41,6 @@ function CourseProfile({courseName, courseDesc, prereqs, subject, difficulty, hw
                 <div id="whyCantIGethrToWork"></div>
                 
             </div>
-            <Reviewcard></Reviewcard>
         </div>
     )
 }
