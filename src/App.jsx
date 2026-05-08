@@ -4,7 +4,7 @@ import CourseList from './CourseList.jsx'
 import './App.css'
 import Navbar from './components/Navbar.jsx'
 import Homepage from './components/Homepage.jsx'
-import ProfileOverlay from './ProfileOverlay.jsx'
+// import ProfileOverlay from './ProfileOverlay.jsx'
 import Error from './Error.jsx'
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
     <>
       <Navbar 
         goToCourseList={goToCourseList}
-        toggleOverlay={toggleOverlay}
+        // toggleOverlay={toggleOverlay}
         setPage={setPage}
         />
       {overlayOpen && <ProfileOverlay userName="Guest" setPage={(p) => { setOverlayOpen(false); setPage(p) }} />}

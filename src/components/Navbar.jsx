@@ -71,7 +71,7 @@ function Navbar({ goToCourseList, toggleOverlay, setPage }) {
             >
               Sign up
             </a>
-            <button onClick={() => toggleOverlay()}
+            <button
               type="button"
               aria-label="Account"
               className="grid size-10 shrink-0 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20 sm:size-12"
