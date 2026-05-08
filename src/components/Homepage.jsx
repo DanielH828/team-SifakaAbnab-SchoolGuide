@@ -83,6 +83,7 @@ export default function Homepage({ toggleOverlay, goToCourseList }) {
           <div className="hidden flex-1 md:block">
             <SearchField
               className="mx-auto max-w-2xl"
+              id="seachBar"
               value={query}
               onChange={setQuery}
               onSubmit={submitSearch}
@@ -122,13 +123,6 @@ export default function Homepage({ toggleOverlay, goToCourseList }) {
             Your guide to all CCA classes! Find the content, teachers, and more!
             Also, review classes and see the opinions of your peers.
           </p>
-
-          <SearchField
-            className="mt-8 w-full max-w-3xl md:hidden"
-            value={query}
-            onChange={setQuery}
-            onSubmit={submitSearch}
-          />
         </section>
 
         <section className="pt-6 pb-20 sm:pt-10">

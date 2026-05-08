@@ -6,7 +6,6 @@ import Navbar from './components/Navbar.jsx'
 import Homepage from './components/Homepage.jsx'
 import ProfileOverlay from './ProfileOverlay.jsx'
 import Error from './Error.jsx'
-import ReviewCard from './Reviewcard.jsx'
 
 function App() {
   const [page, setPage] = useState('Homepage')
@@ -44,21 +43,16 @@ function App() {
         />
       )}
       {page === 'courseProfile' && selectedCourse && (
-        <>
-          <CourseProfile
-            setPage={setPage}
-            courseName={selectedCourse.name}
-            courseDesc={selectedCourse.description}
-            prereqs={selectedCourse.prereq || 'None'}
-            subject={selectedCourse.categories.join(', ') || 'Uncategorized'}
-            difficulty="—"
-            hwTime="—"
-            teachers={selectedCourse.teachers || 'TBD'}
-          />
-          <ReviewCard
-            selectedCourse={selectedCourse.id}
-          />
-        </>
+        <CourseProfile
+          setPage={setPage}
+          courseName={selectedCourse.name}
+          courseDesc={selectedCourse.description}
+          prereqs={selectedCourse.prereq || 'None'}
+          subject={selectedCourse.categories.join(', ') || 'Uncategorized'}
+          difficulty="—"
+          hwTime="—"
+          teachers={selectedCourse.teachers || 'TBD'}
+        />
       )}
       {page === 'error' && <Error />}
       {overlayOpen && <ProfileOverlay userName="Guest" setPage={(p) => { setOverlayOpen(false); setPage(p) }} />}

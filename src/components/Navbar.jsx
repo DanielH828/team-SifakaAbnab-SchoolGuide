@@ -1,14 +1,11 @@
-import GoogleAuth from "./GoogleAuth";
-import './Navbar.css';
+import GoogleLogin from "./GoogleAuth";
 
 function Navbar() {
     return (
         <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '1rem', background: '#174A43'}}>
-            <div className="logo" style={{color: 'white', fontWeight: 'bold' }}>
-                <img src="src/assets/homelogo.svg"></img>
-            </div>
+            <div className="logo" style={{color: 'white', fontWeight: 'bold' }}>logo</div>
             <ul style={{ display: 'flex', gap: '1rem', listStyle: 'none', margin: 0, padding: 0}}>
-                <GoogleAuth></GoogleAuth>
+                <GoogleLogin></GoogleLogin>
             </ul>
         </nav>
     );
