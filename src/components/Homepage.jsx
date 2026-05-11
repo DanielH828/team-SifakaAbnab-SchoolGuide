@@ -40,50 +40,6 @@ export default function Homepage({ toggleOverlay, goToCourseList }) {
 
   return (
     <div className="font-ui min-h-svh bg-white text-sif-green">
-      <header className="sticky top-0 z-10 bg-sif-green">
-        <div className="mx-auto flex max-w-[1512px] items-center gap-3 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
-          <a
-            href="#"
-            aria-label="Home"
-            className="grid size-11 shrink-0 place-items-center rounded-full text-white hover:bg-white/10 sm:size-12"
-          >
-            <Home className="size-6 sm:size-7" strokeWidth={2} />
-          </a>
-
-          <div className="hidden flex-1 md:block">
-            <SearchField
-              className="mx-auto max-w-2xl"
-              id="seachBar"
-              value={query}
-              onChange={setQuery}
-              onSubmit={submitSearch}
-            />
-          </div>
-
-          <div className="ml-auto flex items-center gap-2 sm:gap-3">
-            <button
-              type="button"
-              className="cursor-pointer rounded-[11px] bg-sif-green-accent px-4 py-2 text-sm font-bold text-white hover:brightness-110 sm:px-5 sm:py-2.5 sm:text-base"
-            >
-              Log in
-            </button>
-            <a
-              href="#"
-              className="hidden font-bold text-white hover:underline sm:inline"
-            >
-              Sign up
-            </a>
-            <button onClick={() => toggleOverlay()}
-              type="button"
-              aria-label="Account"
-              className="grid size-10 shrink-0 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20 sm:size-12"
-            >
-              <CircleUserRound className="size-7 sm:size-8" strokeWidth={1.75} />
-            </button>
-          </div>
-        </div>
-      </header>
-
       <main className="mx-auto w-full max-w-[1512px] px-4 sm:px-6 lg:px-8">
         <section className="flex flex-col items-center pt-12 pb-10 text-center sm:pt-16 lg:pt-24">
           <h1 className="font-heading text-6xl font-bold tracking-tight text-sif-green sm:text-7xl lg:text-[90px]">
