@@ -1,9 +1,5 @@
 import { useState } from 'react'
 import {
-  Home,
-  Search,
-  SlidersHorizontal,
-  CircleUserRound,
   Calculator,
   BookOpen,
   FlaskConical,
@@ -29,33 +25,7 @@ const categories = [
   { label: 'All Classes', Icon: LayoutGrid },
 ]
 
-function SearchField({ className = '', value, onChange, onSubmit }) {
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault()
-        onSubmit()
-      }}
-      className={`flex items-center gap-3 rounded-full bg-sif-search px-5 py-3 ${className}`}
-    >
-      <Search className="size-5 text-sif-green shrink-0" strokeWidth={2.5} />
-      <input
-        type="search"
-        placeholder="Search classes, teachers..."
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="font-ui flex-1 bg-transparent text-base text-sif-green placeholder:text-sif-green/60 outline-none"
-      />
-      <button
-        type="submit"
-        aria-label="Search"
-        className="shrink-0 cursor-pointer rounded-full p-1 text-sif-green hover:bg-black/5"
-      >
-        <SlidersHorizontal className="size-5" strokeWidth={2.5} />
-      </button>
-    </form>
-  )
-}
+
 
 export default function Homepage({ toggleOverlay, goToCourseList }) {
   const [query, setQuery] = useState('')
