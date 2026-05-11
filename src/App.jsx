@@ -48,6 +48,7 @@ function App() {
         />
       )}
       {page === 'courseProfile' && selectedCourse && (
+        <>
         <CourseProfile
           setPage={setPage}
           courseName={selectedCourse.name}
@@ -58,6 +59,10 @@ function App() {
           hwTime="—"
           teachers={selectedCourse.teachers || 'TBD'}
         />
+        <ReviewCard
+          selectedCourse={selectedCourse.id}
+        />
+        </>
       )}
       {page === 'error' && <Error />}
     </>
