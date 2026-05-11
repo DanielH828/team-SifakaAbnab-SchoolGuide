@@ -10,8 +10,6 @@ import {
   Languages,
   Users,
   LayoutGrid,
-  Search,
-  Filter,
 } from 'lucide-react'
 
 const categories = [
@@ -52,29 +50,7 @@ export default function Homepage({ toggleOverlay, goToCourseList }) {
             Also, review classes and see the opinions of your peers.
           </p>
 
-          <form
-            onSubmit={(e) => {
-              e.preventDefault()
-              submitSearch()
-            }}
-            className="mt-8 flex w-full max-w-2xl items-center gap-3 rounded-full bg-sif-search px-5 py-3 sm:mt-10 sm:py-4"
-          >
-            <Search className="size-5 shrink-0 text-sif-green sm:size-6" strokeWidth={2.5} />
-            <input
-              type="search"
-              aria-label="Search classes"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              className="font-ui flex-1 bg-transparent text-base text-sif-green placeholder:text-sif-green/60 outline-none sm:text-lg"
-            />
-            <button
-              type="submit"
-              aria-label="Search"
-              className="shrink-0 cursor-pointer rounded-full p-1 text-sif-green hover:bg-black/5"
-            >
-              <Filter className="size-5 sm:size-6" strokeWidth={2.5} />
-            </button>
-          </form>
+          
         </section>
 
         <section className="pt-6 pb-20 sm:pt-10">
