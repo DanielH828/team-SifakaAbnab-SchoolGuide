@@ -1,39 +1,48 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { db } from './firebase';
 import { collection, addDoc, onSnapshot, query, orderBy, updateDoc, doc } from 'firebase/firestore';
-import './Reviewcard.css'
+import './Reviewcard.css';
 import { auth } from './firebase';
+import { onAuthStateChanged } from 'firebase/auth'; // FIXED: Added this import
 
 // Asset Imports
 import DifficultyIcon from './assets/DifficultyIcon.png';
-import EnjoymentIcon from './assets/Enjoyment.png'; 
-import StressIcon from './assets/StressIcon.png'; 
+import EnjoymentIcon from './assets/Enjoyment.png';
+import StressIcon from './assets/StressIcon.png';
 import WorkloadIcon from './assets/WorkloadIcon.png';
 
 const ReviewCard = ({ selectedCourse }) => {
   const [reviews, setReviews] = useState([]);
+  const [user, setUser] = useState(null); // FIXED: Added user state
   const [showForm, setShowForm] = useState(false);
   const [newReview, setNewReview] = useState({ text: '', difficulty: '', workload: '', stress: '', enjoyment: '' });
   const [userVotes, setUserVotes] = useState({});
   const courseId = selectedCourse?.id || selectedCourse;
 
   useEffect(() => {
+    // FIXED: Correctly implemented auth listener
+    const unsubscribeAuth = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
     const savedVotes = JSON.parse(localStorage.getItem('userVotesMap') || '{}');
     setUserVotes(savedVotes);
-    
+
     const q = query(collection(db, "reviews", courseId, "items"), orderBy("createdAt", "desc"));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
+    const unsubscribeReviews = onSnapshot(q, (snapshot) => {
       setReviews(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
     });
-    return () => unsubscribe();
-  }, [selectedCourse]);
 
-  // Helper: Relative "X time ago"
+    return () => {
+      unsubscribeAuth();
+      unsubscribeReviews();
+    };
+  }, [courseId]);
+
   const formatTimeAgo = (timestamp) => {
     if (!timestamp) return '';
     const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
     const seconds = Math.floor((new Date() - date) / 1000);
-
     let interval = Math.floor(seconds / 31536000);
     if (interval >= 1) return `${interval}y ago`;
     interval = Math.floor(seconds / 2592000);
@@ -49,7 +58,6 @@ const ReviewCard = ({ selectedCourse }) => {
     return 'Just now';
   };
 
-  // Helper: Exact Date/Time for Tooltip
   const formatExactDate = (timestamp) => {
     if (!timestamp) return '';
     const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
@@ -80,8 +88,8 @@ const ReviewCard = ({ selectedCourse }) => {
     const currentVote = userVotes[reviewId];
     let voteChange = currentVote === voteType ? (voteType === 'up' ? -1 : 1) : (currentVote ? (voteType === 'up' ? 2 : -2) : (voteType === 'up' ? 1 : -1));
     let newUserVotes = { ...userVotes };
-    if (currentVote === voteType) delete newUserVotes[reviewId]; else newUserVotes[reviewId] = voteType;
-
+    if (currentVote === voteType) delete newUserVotes[reviewId];
+    else newUserVotes[reviewId] = voteType;
     try {
       await updateDoc(reviewRef, { votes: (review.votes || 0) + voteChange });
       setUserVotes(newUserVotes);
@@ -90,12 +98,19 @@ const ReviewCard = ({ selectedCourse }) => {
   };
 
   const submitReview = async () => {
+    if (!user) return;
     try {
       await addDoc(collection(db, "reviews", courseId, "items"), {
-        user: auth.currentUser?.displayName || 'temporaryguestuserthing',
+        user: user.displayName || 'Anonymous User',
         text: newReview.text,
-        scores: { difficulty: Number(newReview.difficulty), workload: Number(newReview.workload), stress: Number(newReview.stress), enjoyment: Number(newReview.enjoyment) },
-        votes: 0, createdAt: new Date()
+        scores: { 
+          difficulty: Number(newReview.difficulty), 
+          workload: Number(newReview.workload), 
+          stress: Number(newReview.stress), 
+          enjoyment: Number(newReview.enjoyment) 
+        },
+        votes: 0,
+        createdAt: new Date()
       });
       setShowForm(false);
       setNewReview({ text: '', difficulty: '', workload: '', stress: '', enjoyment: '' });
@@ -106,7 +121,6 @@ const ReviewCard = ({ selectedCourse }) => {
 
   return (
     <div style={{ padding: '20px', maxWidth: '900px', margin: '0 auto', fontFamily: 'sans-serif' }}>
-      
       {/* Average Stat Pills */}
       <div style={{ display: 'flex', gap: '15px', marginBottom: '30px', justifyContent: 'space-between', flexWrap: 'wrap' }}>
         {Object.entries(averages).map(([label, score]) => (
@@ -118,59 +132,60 @@ const ReviewCard = ({ selectedCourse }) => {
         ))}
       </div>
 
-      <button onClick={() => setShowForm(!showForm)} style={{ backgroundColor: '#134E4A', color: 'white', padding: '12px 24px', borderRadius: '25px', border: 'none', cursor: 'pointer', fontWeight: 'bold', marginBottom: '20px' }}>
-        {showForm ? 'Cancel' : 'Add a review'}
-      </button>
-
-      {/* Form Section */}
-      {showForm && (
-        <div style={{ backgroundColor: '#F3F4F6', padding: '25px', borderRadius: '12px', marginBottom: '30px', border: '1px solid #E5E7EB' }}>
-          <textarea placeholder="Insert text here..." value={newReview.text} onChange={(e) => setNewReview({...newReview, text: e.target.value})} style={{ width: '100%', border: 'none', background: 'transparent', fontSize: '16px', outline: 'none', minHeight: '60px', marginBottom: '20px', resize: 'none' }} />
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', borderTop: '1px solid #E5E7EB', paddingTop: '15px' }}>
-            {['difficulty', 'workload', 'stress', 'enjoyment'].map(attr => (
-              <label key={attr} style={{ display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 'bold' }}>
-                <span style={{ textTransform: 'capitalize' }}>{attr}:</span>
-                <input type="number" placeholder="__" value={newReview[attr]} style={{ width: '35px', border: 'none', borderBottom: '2px solid #000', background: 'transparent', textAlign: 'center', outline: 'none' }} 
-                  onChange={(e) => {
-                    let val = e.target.value;
-                    if (val !== '') {
-                      val = parseFloat(val);
-                      if (val > 10) val = 10;
-                      if (val < 0) val = 0;
-                    }
-                    setNewReview({ ...newReview, [attr]: val });
-                  }} 
-                />
-                <span>/10</span>
-              </label>
-            ))}
-          </div>
-          <button disabled={!isFormValid} onClick={submitReview} style={{ marginTop: '20px', padding: '10px 24px', backgroundColor: '#134E4A', color: 'white', border: 'none', borderRadius: '8px', opacity: isFormValid ? 1 : 0.5 }}>Submit Review</button>
-        </div>
+      {/* FIXED: Wrapped the logic in fragments and fixed ternary syntax */}
+      {!user ? (
+        <p style={{ color: '#666',  marginBottom: '20px' }}>
+          Please log in to post a review.
+        </p>
+      ) : (
+        <>
+          <button onClick={() => setShowForm(!showForm)} style={{ backgroundColor: '#134E4A', color: 'white', padding: '12px 24px', borderRadius: '25px', border: 'none', cursor: 'pointer', fontWeight: 'bold', marginBottom: '20px' }}>
+            {showForm ? 'Cancel' : 'Add a review'}
+          </button>
+          
+          {showForm && (
+            
+            <div style={{ backgroundColor: '#F3F4F6', padding: '25px', borderRadius: '12px', marginBottom: '30px', border: '1px solid #E5E7EB' }}>
+              <textarea placeholder="Insert text here..." value={newReview.text} onChange={(e) => setNewReview({...newReview, text: e.target.value})} style={{ width: '100%', border: 'none', background: 'transparent', fontSize: '16px', outline: 'none', minHeight: '60px', marginBottom: '20px', resize: 'none' }} />
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', borderTop: '1px solid #E5E7EB', paddingTop: '15px' }}>
+                {['difficulty', 'workload', 'stress', 'enjoyment'].map(attr => (
+                  <label key={attr} style={{ display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 'bold' }}>
+                    <span style={{ textTransform: 'capitalize' }}>{attr}:</span>
+                    <input type="number" placeholder="__" value={newReview[attr]} style={{ width: '35px', border: 'none', borderBottom: '2px solid #000', background: 'transparent', textAlign: 'center', outline: 'none' }} onChange={(e) => {
+                      let val = e.target.value;
+                      if (val !== '') {
+                        val = parseFloat(val);
+                        if (val > 10) val = 10;
+                        if (val < 0) val = 0;
+                      }
+                      setNewReview({ ...newReview, [attr]: val });
+                    }} />
+                    <span>/10</span>
+                  </label>
+                ))}
+              </div>
+              <button disabled={!isFormValid} onClick={submitReview} style={{ marginTop: '20px', padding: '10px 24px', backgroundColor: '#134E4A', color: 'white', border: 'none', borderRadius: '8px', opacity: isFormValid ? 1 : 0.5 }}>Submit Review</button>
+            </div>
+          )}
+        </>
       )}
 
       {/* Reviews List */}
       {reviews.map(rev => (
         <div key={rev.id} style={{ backgroundColor: '#F9FAFB', padding: '20px', borderRadius: '12px', marginBottom: '20px', border: '1px solid #F3F4F6', position: 'relative' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-             <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#000' }} />
-             <span style={{ fontWeight: 'bold' }}>{rev.user}</span>
+            <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#000' }} />
+            <span style={{ fontWeight: 'bold' }}>{rev.user}</span>
           </div>
           <p style={{ margin: '10px 0' }}>{rev.text}</p>
           <div style={{ fontWeight: 'bold', fontSize: '14px', marginBottom: '15px' }}>
             Difficulty: {rev.scores?.difficulty}/10 Workload: {rev.scores?.workload}/10 Stress: {rev.scores?.stress}/10 Enjoyment: {rev.scores?.enjoyment}/10
           </div>
-          
           <div style={{ display: 'flex', gap: '12px' }}>
             <button onClick={() => handleVote(rev.id, 'up')} style={{ border: '1px solid #E5E7EB', padding: '6px 14px', borderRadius: '20px', backgroundColor: userVotes[rev.id] === 'up' ? '#DCFCE7' : '#fff' }}>👍 {rev.votes || 0}</button>
             <button onClick={() => handleVote(rev.id, 'down')} style={{ border: '1px solid #E5E7EB', padding: '6px 14px', borderRadius: '20px', backgroundColor: userVotes[rev.id] === 'down' ? '#FEE2E2' : '#fff' }}>👎</button>
           </div>
-
-          {/* Updated Timestamp with Hover Tooltip */}
-          <div 
-            title={formatExactDate(rev.createdAt)} 
-            style={{ position: 'absolute', bottom: '15px', right: '20px', fontSize: '12px', color: '#999', cursor: 'help' }}
-          >
+          <div title={formatExactDate(rev.createdAt)} style={{ position: 'absolute', bottom: '15px', right: '20px', fontSize: '12px', color: '#999', cursor: 'help' }} >
             {formatTimeAgo(rev.createdAt)}
           </div>
         </div>
@@ -180,3 +195,4 @@ const ReviewCard = ({ selectedCourse }) => {
 };
 
 export default ReviewCard;
+//bye bye
