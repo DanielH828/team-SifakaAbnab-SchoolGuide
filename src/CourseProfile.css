@@ -120,6 +120,11 @@
         grid-row: auto;
     }
 
+    #theCourseProfileOne h2,
+    #whyCantIGethrToWork {
+        grid-column: auto;
+    }
+
     #backButton {
         padding: 8px 12px;
         margin: 4px 0 8px 0;
