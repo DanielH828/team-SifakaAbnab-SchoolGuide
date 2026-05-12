@@ -63,6 +63,7 @@ function CourseList({
           <ListCard
             key={course.id}
             courseName2={course.name}
+            courseDescription={course.description}
             difficulty={course.categories.join(', ') || '—'}
             workload={course.prereq ? `Prereq: ${course.prereq}` : 'No prereqs'}
             onClick={() => openCourse(course)}
