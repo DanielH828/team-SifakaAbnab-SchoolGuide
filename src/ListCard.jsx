@@ -1,4 +1,4 @@
-function ListCard({ courseName2, courseDescription, difficulty, workload, onClick }) {
+function ListCard({ courseName2, courseSubject, onClick }) {
   return (
     <div
       className="courseCard"
@@ -14,9 +14,7 @@ function ListCard({ courseName2, courseDescription, difficulty, workload, onClic
       }}
     >
       <h2 className="Name">{courseName2}</h2>
-      <p className="desc">{courseDescription}</p>
-      <p className="load">{workload}</p>
-      <p className="diffic">{difficulty}</p>
+      <p className="subject">{courseSubject}</p>
     </div>
   )
 }

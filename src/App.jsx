@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
+import { db } from './firebase';
+import { collection, getDocs } from 'firebase/firestore';
 import CourseProfile from './CourseProfile.jsx'
 import CourseList from './CourseList.jsx'
 import './App.css'
@@ -8,11 +10,21 @@ import Homepage from './components/Homepage.jsx'
 import Error from './Error.jsx'
 
 function App() {
+  const [items, setItems] = useState([])
   const [page, setPage] = useState('Homepage')
   const [overlayOpen, setOverlayOpen] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCourse, setSelectedCourse] = useState(null)
+  const itemsCollection = collection(db, placeholderID)
+
+  useEffect(() => {
+    const getItems = async () => {
+      const data = await getDocs(itemsCollection)
+      setItems(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    }
+    getItems()
+  }, [])
 
   const toggleOverlay = () => setOverlayOpen((v) => !v)
 
@@ -40,17 +52,14 @@ function App() {
       )}
       {page === 'CourseList' && (
         <CourseList
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
+          items={items}
           openCourse={openCourse}
         />
       )}
       {page === 'courseProfile' && selectedCourse && (
         <CourseProfile
           setPage={setPage}
-          courseName={selectedCourse.name}
+          courseName={selectedCourse.class}
           courseDesc={selectedCourse.description}
           prereqs={selectedCourse.prereq || 'None'}
           subject={selectedCourse.categories.join(', ') || 'Uncategorized'}
