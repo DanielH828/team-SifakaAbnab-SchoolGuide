@@ -1,6 +1,6 @@
 import GoogleLogin from "./GoogleAuth";
 import { useState } from 'react';
-import { Home, Search, SlidersHorizontal, CircleUserRound } from 'lucide-react'
+import { Home, Search, SlidersHorizontal} from 'lucide-react'
 
 function SearchField({ className = '', value, onChange, onSubmit }) {
     return (
@@ -64,19 +64,6 @@ function Navbar({ goToCourseList, toggleOverlay, setPage }) {
 
             >
               <GoogleLogin></GoogleLogin>
-            </button>
-            <a
-              href="#"
-              className="hidden font-bold text-white hover:underline sm:inline"
-            >
-              Sign up
-            </a>
-            <button
-              type="button"
-              aria-label="Account"
-              className="grid size-10 shrink-0 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20 sm:size-12"
-            >
-              <CircleUserRound className="size-7 sm:size-8" strokeWidth={1.75} />
             </button>
           </div>
         </div>
