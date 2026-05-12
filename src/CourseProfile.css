@@ -3,6 +3,7 @@
     grid-template-columns: repeat(24, 1fr);
     gap: 20px;
     text-align: left;
+    margin: 20px;
 }
 
 .boxForProfile {
@@ -11,41 +12,65 @@
     padding: 5px 20px 20px 20px;
 }
 
-h1 {
+#theCourseProfileOne h1 {
     padding: 0px;
     grid-column: span 24;
     text-align: center;
+    color: rgb(23, 74, 67);
+    font-weight: 700;
+    margin: 0px 0px 30px 0px;
+    font-size: 50px;
 }
 
-h2 {
+#theCourseProfileOne h2 {
     padding: 0px 0px 0px 20px;
     grid-column: span 24;
     text-align: left;
 }
 
+#theCourseProfileOne h3{
+    color: rgb(23, 74, 67);
+    padding: 20px 10px 5px 10px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+#backButton {
+    background-color: rgb(23, 74, 67);
+    border-radius: 10px;
+    padding: 30px 0px 30px 0px;
+    width: 75px;
+    color: white;
+}
+
+#theCourseProfileOne p{
+    color: rgb(0, 0, 0);
+    padding: 10px;
+}
+
 #boxDesc {
-    grid-column: span 6;
+    grid-column: span 10;
     grid-row: span 3;
 }
 
 #boxPrereqs {
-    grid-column: span 18;
+    grid-column: span 14;
 }
 
 #boxSubject {
-    grid-column: span 8;
+    grid-column: span 7;
 }
 
 #boxDifficulty {
-    grid-column: span 9;
+    grid-column: span 7;
 }
 
 #boxHWTime {
-    grid-column: span 9;
+    grid-column: span 7;
 }
 
 #boxTeachers {
-    grid-column: span 10;
+    grid-column: span 7;
 }
 
 #backButton {

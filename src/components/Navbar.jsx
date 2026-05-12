@@ -9,7 +9,7 @@ function SearchField({ className = '', value, onChange, onSubmit }) {
           e.preventDefault()
           onSubmit()
         }}
-        className={`flex items-center gap-3 rounded-full bg-sif-search px-5 py-3 ${className}`}
+        className={`flex items-center gap-3 rounded-full bg-sif-search px-5 py-2 ${className}`}
       >
         <Search className="size-5 text-sif-green shrink-0" strokeWidth={2.5} />
         <input
@@ -40,14 +40,14 @@ function Navbar({ goToCourseList, toggleOverlay, setPage }) {
 
     return (
         <header className="sticky top-0 z-10 bg-sif-green">
-        <div className="mx-auto flex max-w-[1512px] items-center gap-3 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
+        <div className="mx-auto flex max-w-[1512px] items-center gap-3 px-4 py-2 sm:gap-4 sm:px-6 sm:py-2.5">
           <button
             onClick={() => setPage('Homepage')}
             href="#"
             aria-label="Home"
-            className="grid size-11 shrink-0 place-items-center rounded-full text-white hover:bg-white/10 sm:size-12"
+            className="grid size-10 shrink-0 place-items-center rounded-full text-white hover:bg-white/10"
           >
-            <Home className="size-6 sm:size-7" strokeWidth={2} />
+            <Home className="size-5 sm:size-6" strokeWidth={2} />
           </button>
           <div className="hidden flex-1 md:block">
             <SearchField
@@ -74,9 +74,9 @@ function Navbar({ goToCourseList, toggleOverlay, setPage }) {
             <button
               type="button"
               aria-label="Account"
-              className="grid size-10 shrink-0 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20 sm:size-12"
+              className="grid size-9 shrink-0 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20 sm:size-10"
             >
-              <CircleUserRound className="size-7 sm:size-8" strokeWidth={1.75} />
+              <CircleUserRound className="size-6 sm:size-7" strokeWidth={1.75} />
             </button>
           </div>
         </div>

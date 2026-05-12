@@ -1,5 +1,5 @@
 .listCard {
-    background-color: rgb(202, 228, 214);
+    background-color: rgb(255, 255, 255);
     margin: 1rem auto;
     max-width: 60rem;
     padding: 1rem;
@@ -60,16 +60,18 @@
 
 .filterThing li {
     padding: 4px 10px;
-    background-color: rgb(170, 209, 188);
+    background-color: rgb(255, 255, 255);
     margin: 4px 5px;
     border-radius: 1rem;
     cursor: pointer;
     user-select: none;
+    color: rgb(23, 74, 67);
     transition: background-color 0.15s ease;
 }
 
 .filterThing li:hover {
     background-color: rgb(140, 190, 165);
+    color: rgb(0, 0, 0);
 }
 
 .filterThing li.active {

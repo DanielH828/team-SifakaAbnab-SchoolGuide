@@ -1,0 +1,15 @@
+#listCard {
+    background-color: rgb(202, 228, 214);
+}
+
+#listCard h2 {
+    color: rgb(23, 74, 67);
+    font-weight: 1000px;
+    padding: 5px 10px 0px 10px;
+}
+
+#listCard p{
+    text-align: left;
+    padding: 5px 10px 0px 10px;
+}
+
