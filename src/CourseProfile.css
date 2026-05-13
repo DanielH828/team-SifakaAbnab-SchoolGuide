@@ -83,6 +83,56 @@
     grid-column: span 24;
 }
 
+@media (max-width: 768px) {
+    #theCourseProfileOne {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 12px;
+    }
+
+    #theCourseProfileOne h1 {
+        font-size: 28px;
+        grid-column: auto;
+        margin: 0 0 12px 0;
+    }
+
+    #theCourseProfileOne h3 {
+        font-size: 16px;
+        padding: 10px 8px 4px 8px;
+    }
+
+    #theCourseProfileOne p {
+        padding: 6px 8px;
+        font-size: 14px;
+    }
+
+    .boxForProfile {
+        padding: 5px 12px 12px 12px;
+    }
+
+    #boxDesc,
+    #boxPrereqs,
+    #boxSubject,
+    #boxDifficulty,
+    #boxHWTime,
+    #boxTeachers {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    #theCourseProfileOne h2,
+    #whyCantIGethrToWork {
+        grid-column: auto;
+    }
+
+    #backButton {
+        padding: 8px 12px;
+        margin: 4px 0 8px 0;
+        width: auto;
+        min-width: 70px;
+    }
+}
+
 #ratingSubThing {
     grid-column: span 24;
     text-align: center;

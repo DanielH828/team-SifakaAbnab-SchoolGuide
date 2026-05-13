@@ -120,11 +120,11 @@ const ReviewCard = ({ selectedCourse }) => {
   const isFormValid = newReview.text.trim() !== '' && newReview.difficulty !== '' && newReview.workload !== '' && newReview.stress !== '' && newReview.enjoyment !== '';
 
   return (
-    <div style={{ padding: '20px', maxWidth: '900px', margin: '0 auto', fontFamily: 'sans-serif' }}>
+    <div style={{ padding: 'clamp(12px, 4vw, 20px)', maxWidth: '900px', margin: '0 auto', fontFamily: 'sans-serif' }}>
       {/* Average Stat Pills */}
-      <div style={{ display: 'flex', gap: '15px', marginBottom: '30px', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: 'clamp(8px, 2vw, 15px)', marginBottom: 'clamp(16px, 4vw, 30px)', justifyContent: 'space-between', flexWrap: 'wrap' }}>
         {Object.entries(averages).map(([label, score]) => (
-          <div key={label} style={{ padding: '15px 45px', borderRadius: '50px', backgroundColor: getPillColor(label, score), textAlign: 'center', minWidth: '160px', display: 'flex', flexDirection: 'column', alignItems: 'center', flex: '1 1 auto' }}>
+          <div key={label} style={{ padding: 'clamp(10px, 3vw, 15px) clamp(12px, 5vw, 45px)', borderRadius: '50px', backgroundColor: getPillColor(label, score), textAlign: 'center', minWidth: '100px', display: 'flex', flexDirection: 'column', alignItems: 'center', flex: '1 1 auto' }}>
             <img src={iconMap[label]} alt={label} style={{ width: '28px', height: '28px', marginBottom: '4px' }} />
             <div style={{ fontWeight: 'bold', fontSize: '13px', textTransform: 'capitalize' }}>{label}</div>
             <div style={{ fontSize: '16px', fontWeight: 'bold' }}>{score}/10</div>
