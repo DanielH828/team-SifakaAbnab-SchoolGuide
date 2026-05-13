@@ -1,17 +1,18 @@
-import { createPortal } from 'react-dom';
+// import { createPortal } from 'react-dom';
 
-function ProfileOverlay({userName, setPage}) {
-    const overlayContent = (
-            <div className="overlay-container">
-                 <div className="overlay-content">
-                    <h2>{userName}</h2>
-                    <button className="ProfileSettings" onClick={() => setPage('error')}>Profile Settings</button>
-                </div>
-            </div>
-    )
+// function ProfileOverlay({userName, setPage}) {
+//     const overlayContent = (
+//             <div className="overlay-container">
+//                  <div className="overlay-content">
+//                     <h2>{userName}</h2>
+//                     <button className="ProfileSettings" onClick={() => setPage('error')}>Profile Settings</button>
+//                 </div>
+//             </div>
+//     )
 
-return createPortal(overlayContent, document.body)
+// return createPortal(overlayContent, document.body)
 
-}
+// }
 
-export default ProfileOverlay
+// export default ProfileOverlay
+// Not enough time
