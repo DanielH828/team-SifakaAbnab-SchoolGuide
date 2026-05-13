@@ -16,7 +16,7 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCourse, setSelectedCourse] = useState(null)
-  const itemsCollection = collection(db, placeholderID)
+  const itemsCollection = collection(db, 'placeholderID')
 
   useEffect(() => {
     const getItems = async () => {
