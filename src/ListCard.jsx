@@ -1,6 +1,8 @@
-function ListCard({ courseName2, courseSubject, onClick }) {
+import './ListCard.css'
+
+function ListCard({ courseName2, courseDescription, difficulty, workload, onClick }) {
   return (
-    <div
+    <div id="listCard"
       className="courseCard"
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
