@@ -49,24 +49,25 @@ function App() {
         />
       {overlayOpen && <ProfileOverlay userName="Guest" setPage={(p) => { setOverlayOpen(false); setPage(p) }} />}
       {page === 'Homepage' && (
-        <Homepage toggleOverlay={toggleOverlay} goToCourseList={goToCourseList} />
+        <Homepage toggleOverlay={toggleOverlay} 
+        goToCourseList={goToCourseList} />
       )}
       {page === 'CourseList' && (
         <CourseList
           items={items}
           openCourse={openCourse}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
         />
       )}
       {page === 'courseProfile' && selectedCourse && (
         <>
           <CourseProfile
             setPage={setPage}
-            courseName={selectedCourse.name}
-            courseDesc={selectedCourse.description}
+            courseName={selectedCourse.class || 'Nonesssssssssssssssss'}
+            courseDesc={selectedCourse.desc || 'None'}
             prereqs={selectedCourse.prereq || 'None'}
-            subject={selectedCourse.categories.join(', ') || 'Uncategorized'}
-            difficulty="—"
-            hwTime="—"
+            subject={selectedCourse.subject || 'Uncategorized'}
             teachers={selectedCourse.teachers || 'TBD'}
           />
           <ReviewCard

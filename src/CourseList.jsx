@@ -2,9 +2,8 @@ import './CourseList.css'
 import ListCard from './ListCard.jsx'
 
 
-function CourseList() {
-  
 
+function CourseList({ items = [], openCourse }) {
   return (
     <>
       <div className="cardContainer">
@@ -13,6 +12,7 @@ function CourseList() {
             key={item.id}
             courseName2={item.class}
             courseSubject={item.subject}
+            onClick={() => openCourse(item)}
           />
         ))}
       </div>

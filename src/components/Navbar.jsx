@@ -65,19 +65,6 @@ function Navbar({ goToCourseList, toggleOverlay, setPage }) {
             >
               <GoogleLogin></GoogleLogin>
             </button>
-            <a
-              href="#"
-              className="hidden font-bold text-white hover:underline sm:inline"
-            >
-              Sign up
-            </a>
-            <button
-              type="button"
-              aria-label="Account"
-              className="grid size-9 shrink-0 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20 sm:size-10"
-            >
-              <CircleUserRound className="size-6 sm:size-7" strokeWidth={1.75} />
-            </button>
           </div>
         </div>
       </header>

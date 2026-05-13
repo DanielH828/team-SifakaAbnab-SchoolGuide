@@ -1,6 +1,6 @@
 import './ListCard.css'
 
-function ListCard({ courseName2, courseDescription, difficulty, workload, onClick }) {
+function ListCard({ courseName2, courseSubject, onClick }) {
   return (
     <div id="listCard"
       className="courseCard"
