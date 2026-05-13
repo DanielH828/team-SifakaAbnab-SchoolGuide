@@ -82,20 +82,20 @@ export default function Homepage({ toggleOverlay, goToCourseList }) {
             Choose by category:
           </h2>
 
-          <ul className="mt-5 grid grid-cols-2 gap-2.5 sm:mt-10 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:mt-12 lg:grid-cols-5">
+          <ul className="mx-auto mt-5 grid max-w-[900px] grid-cols-2 gap-2.5 sm:mt-10 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:mt-12 lg:grid-cols-5">
             {categories.map((cat) => (
               <li key={cat.label}>
                 <button
                   type="button"
                   onClick={() => pickCategory(cat.label)}
-                  className="group flex aspect-square w-full cursor-pointer flex-col items-center justify-center gap-1.5 rounded-[10px] bg-sif-mint p-2 text-white transition hover:brightness-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-sif-green/30 sm:gap-2 sm:rounded-[12px] sm:p-3"
+                  className="group flex aspect-[4/3] w-full cursor-pointer flex-col items-center justify-center gap-1.5 rounded-[10px] bg-sif-mint p-2 text-white transition hover:brightness-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-sif-green/30 sm:gap-2 sm:rounded-[12px] sm:p-3"
                 >
                   <cat.Icon
-                    className="size-6 sm:size-8 lg:size-9"
+                    className="size-5 sm:size-7 lg:size-8"
                     strokeWidth={2}
                     aria-hidden
                   />
-                  <span className="font-ui text-[11px] font-bold leading-tight sm:text-base lg:text-lg">
+                  <span className="font-ui text-[11px] font-bold leading-tight sm:text-sm lg:text-base">
                     {cat.label}
                   </span>
                 </button>
