@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { db } from './firebase';
+import { auth, db } from './firebase';
 import { collection, getDocs } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
 import CourseProfile from './CourseProfile.jsx'
 import CourseList from './CourseList.jsx'
 import './App.css'
