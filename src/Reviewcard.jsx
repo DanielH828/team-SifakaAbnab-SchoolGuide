@@ -1,6 +1,7 @@
-import React, { useState, useMemo, useEffect } from 'react';
+
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { db } from './firebase';
-import { collection, addDoc, onSnapshot, query, orderBy, updateDoc, doc } from 'firebase/firestore';
+import { collection, addDoc, onSnapshot, query, orderBy, updateDoc, doc, increment } from 'firebase/firestore';
 import './Reviewcard.css';
 import { auth } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth'; // FIXED: Added this import
@@ -82,40 +83,68 @@ const ReviewCard = ({ selectedCourse }) => {
 
   const iconMap = { difficulty: DifficultyIcon, workload: WorkloadIcon, stress: StressIcon, enjoyment: EnjoymentIcon };
 
-  const handleVote = async (reviewId, voteType) => {
-    const reviewRef = doc(db, "reviews", courseId, "items", reviewId);
-    const review = reviews.find(r => r.id === reviewId);
-    const currentVote = userVotes[reviewId];
-    let voteChange = currentVote === voteType ? (voteType === 'up' ? -1 : 1) : (currentVote ? (voteType === 'up' ? 2 : -2) : (voteType === 'up' ? 1 : -1));
-    let newUserVotes = { ...userVotes };
-    if (currentVote === voteType) delete newUserVotes[reviewId];
-    else newUserVotes[reviewId] = voteType;
-    try {
-      await updateDoc(reviewRef, { votes: (review.votes || 0) + voteChange });
-      setUserVotes(newUserVotes);
-      localStorage.setItem('userVotesMap', JSON.stringify(newUserVotes));
-    } catch (e) { console.error(e); }
-  };
+const [pendingVotes, setPendingVotes] = useState({});
 
-  const submitReview = async () => {
-    if (!user) return;
-    try {
-      await addDoc(collection(db, "reviews", courseId, "items"), {
-        user: user.displayName || 'Anonymous User',
-        text: newReview.text,
-        scores: { 
-          difficulty: Number(newReview.difficulty), 
-          workload: Number(newReview.workload), 
-          stress: Number(newReview.stress), 
-          enjoyment: Number(newReview.enjoyment) 
-        },
-        votes: 0,
-        createdAt: new Date()
-      });
-      setShowForm(false);
-      setNewReview({ text: '', difficulty: '', workload: '', stress: '', enjoyment: '' });
-    } catch (e) { console.error(e); }
-  };
+const handleVote = async (reviewId, voteType) => {
+  if (pendingVotes[reviewId]) return;
+
+  const reviewRef = doc(db, "reviews", courseId, "items", reviewId);
+  const currentVote = userVotes[reviewId];
+
+  let delta;
+  if (currentVote === voteType) {
+    delta = voteType === 'up' ? -1 : 1;
+  } else if (currentVote) {
+    delta = voteType === 'up' ? 2 : -2;
+  } else {
+    delta = voteType === 'up' ? 1 : -1;
+  }
+
+  const newUserVotes = { ...userVotes };
+  if (currentVote === voteType) delete newUserVotes[reviewId];
+  else newUserVotes[reviewId] = voteType;
+
+  // Update UI and release lock immediately — don't wait for Firestore
+  setUserVotes(newUserVotes);
+  localStorage.setItem('userVotesMap', JSON.stringify(newUserVotes));
+
+  // Fire and forget — increment() is atomic so no race condition
+  try {
+    await updateDoc(reviewRef, { votes: increment(delta) });
+  } catch (e) {
+    console.error(e);
+    // Only rollback on actual failure
+    const rolledBack = { ...newUserVotes };
+    if (currentVote) rolledBack[reviewId] = currentVote;
+    else delete rolledBack[reviewId];
+    setUserVotes(rolledBack);
+    localStorage.setItem('userVotesMap', JSON.stringify(rolledBack));
+  }
+};
+
+const submitReview = async () => {
+  if (!user) return;
+  try {
+    await addDoc(collection(db, "reviews", courseId, "items"), {
+      user: user.displayName || 'Anonymous User',
+      text: newReview.text,
+      scores: { 
+        difficulty: Number(newReview.difficulty), 
+        workload: Number(newReview.workload), 
+        stress: Number(newReview.stress), 
+        enjoyment: Number(newReview.enjoyment) 
+      },
+      votes: 0,
+      createdAt: new Date()
+    });
+  } catch (e) { 
+    console.error(e); 
+  } finally {
+    // Always close and reset, even if the write failed
+    setNewReview({ text: '', difficulty: '', workload: '', stress: '', enjoyment: '' });
+    setShowForm(false);
+  }
+};
 
   const isFormValid = newReview.text.trim() !== '' && newReview.difficulty !== '' && newReview.workload !== '' && newReview.stress !== '' && newReview.enjoyment !== '';
 
@@ -146,7 +175,23 @@ const ReviewCard = ({ selectedCourse }) => {
           {showForm && (
             
             <div style={{ backgroundColor: '#F3F4F6', padding: '25px', borderRadius: '12px', marginBottom: '30px', border: '1px solid #E5E7EB' }}>
-              <textarea placeholder="Insert text here..." value={newReview.text} onChange={(e) => setNewReview({...newReview, text: e.target.value})} style={{ width: '100%', border: 'none', background: 'transparent', fontSize: '16px', outline: 'none', minHeight: '60px', marginBottom: '20px', resize: 'none' }} />
+              <div style={{ position: 'relative' }}>
+  <textarea
+    placeholder="Insert text here..."
+    value={newReview.text}
+    maxLength={1000}
+    onChange={(e) => setNewReview({...newReview, text: e.target.value})}
+    style={{ width: '100%', border: 'none', background: 'transparent', fontSize: '16px', outline: 'none', minHeight: '60px', marginBottom: '4px', resize: 'none' }}
+  />
+  <div style={{
+    textAlign: 'right',
+    fontSize: '12px',
+    color: newReview.text.length > 900 ? (newReview.text.length >= 1000 ? '#EF4444' : '#F97316') : '#9CA3AF',
+    marginBottom: '16px'
+  }}>
+    {newReview.text.length}/1000
+  </div>
+</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', borderTop: '1px solid #E5E7EB', paddingTop: '15px' }}>
                 {['difficulty', 'workload', 'stress', 'enjoyment'].map(attr => (
                   <label key={attr} style={{ display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 'bold' }}>
@@ -181,10 +226,30 @@ const ReviewCard = ({ selectedCourse }) => {
           <div style={{ fontWeight: 'bold', fontSize: '14px', marginBottom: '15px' }}>
             Difficulty: {rev.scores?.difficulty}/10 Workload: {rev.scores?.workload}/10 Stress: {rev.scores?.stress}/10 Enjoyment: {rev.scores?.enjoyment}/10
           </div>
-          <div style={{ display: 'flex', gap: '12px' }}>
-            <button onClick={() => handleVote(rev.id, 'up')} style={{ border: '1px solid #E5E7EB', padding: '6px 14px', borderRadius: '20px', backgroundColor: userVotes[rev.id] === 'up' ? '#DCFCE7' : '#fff' }}>👍 {rev.votes || 0}</button>
-            <button onClick={() => handleVote(rev.id, 'down')} style={{ border: '1px solid #E5E7EB', padding: '6px 14px', borderRadius: '20px', backgroundColor: userVotes[rev.id] === 'down' ? '#FEE2E2' : '#fff' }}>👎</button>
-          </div>
+<div style={{ display: 'flex', gap: '12px' }}>
+  <button
+    onClick={() => handleVote(rev.id, 'up')}
+    disabled={!!pendingVotes[rev.id]}
+    style={{
+      border: '1px solid #E5E7EB', padding: '6px 14px', borderRadius: '20px',
+      backgroundColor: userVotes[rev.id] === 'up' ? '#DCFCE7' : '#fff',
+      opacity: pendingVotes[rev.id] ? 0.5 : 1,
+      cursor: pendingVotes[rev.id] ? 'not-allowed' : 'pointer'
+    }}>
+    👍 {rev.votes || 0}
+  </button>
+  <button
+    onClick={() => handleVote(rev.id, 'down')}
+    disabled={!!pendingVotes[rev.id]}
+    style={{
+      border: '1px solid #E5E7EB', padding: '6px 14px', borderRadius: '20px',
+      backgroundColor: userVotes[rev.id] === 'down' ? '#FEE2E2' : '#fff',
+      opacity: pendingVotes[rev.id] ? 0.5 : 1,
+      cursor: pendingVotes[rev.id] ? 'not-allowed' : 'pointer'
+    }}>
+    👎
+  </button>
+</div>
           <div title={formatExactDate(rev.createdAt)} style={{ position: 'absolute', bottom: '15px', right: '20px', fontSize: '12px', color: '#999', cursor: 'help' }} >
             {formatTimeAgo(rev.createdAt)}
           </div>

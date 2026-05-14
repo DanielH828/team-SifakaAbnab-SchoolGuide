@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { auth } from './firebase'
+import { onAuthStateChanged } from 'firebase/auth'
 import CourseProfile from './CourseProfile.jsx'
 import CourseList from './CourseList.jsx'
 import './App.css'
@@ -14,6 +16,15 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCourse, setSelectedCourse] = useState(null)
+
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser)
+    })
+    return () => unsubscribe()
+  }, [])
 
   const toggleOverlay = () => setOverlayOpen((v) => !v)
 
@@ -34,6 +45,7 @@ function App() {
         goToCourseList={goToCourseList}
         // toggleOverlay={toggleOverlay}
         setPage={setPage}
+        user={user}
         />
       {overlayOpen && <ProfileOverlay userName="Guest" setPage={(p) => { setOverlayOpen(false); setPage(p) }} />}
       {page === 'Homepage' && (
