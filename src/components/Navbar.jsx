@@ -1,8 +1,9 @@
 import GoogleLogin from "./GoogleAuth";
 import { useState } from 'react';
-import { Home, Search, SlidersHorizontal, CircleUserRound } from 'lucide-react'
+import { Home, Search, SlidersHorizontal} from 'lucide-react'
 
-function SearchField({ className = '', value, onChange, onSubmit }) {
+
+function SearchField({ className = '', value, onChange, onSubmit, }) {
     return (
       <form
         onSubmit={(e) => {
@@ -31,7 +32,7 @@ function SearchField({ className = '', value, onChange, onSubmit }) {
   }
 
 
-function Navbar({ goToCourseList, toggleOverlay, setPage }) {
+function Navbar({ goToCourseList, toggleOverlay, setPage, user }) {
     const [query, setQuery] = useState('')
 
     const submitSearch = () => {
@@ -57,27 +58,14 @@ function Navbar({ goToCourseList, toggleOverlay, setPage }) {
               onSubmit={submitSearch}
             />
           </div>
+            {user && (
+              <a
+              className="text-white">
+                {user.displayName}
+              </a>
+            )}
           <div className="ml-auto flex items-center gap-2 sm:gap-3">
-            <button
-              type="button"
-              className="cursor-pointer rounded-[11px] bg-sif-green-accent px-4 py-2 text-sm font-bold text-white hover:brightness-110 sm:px-5 sm:py-2.5 sm:text-base"
-
-            >
               <GoogleLogin></GoogleLogin>
-            </button>
-            <a
-              href="#"
-              className="hidden font-bold text-white hover:underline sm:inline"
-            >
-              Sign up
-            </a>
-            <button
-              type="button"
-              aria-label="Account"
-              className="grid size-9 shrink-0 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20 sm:size-10"
-            >
-              <CircleUserRound className="size-6 sm:size-7" strokeWidth={1.75} />
-            </button>
           </div>
         </div>
       </header>
