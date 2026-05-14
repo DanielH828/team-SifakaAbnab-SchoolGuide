@@ -122,25 +122,29 @@ const handleVote = async (reviewId, voteType) => {
   }
 };
 
-  const submitReview = async () => {
-    if (!user) return;
-    try {
-      await addDoc(collection(db, "reviews", courseId, "items"), {
-        user: user.displayName || 'Anonymous User',
-        text: newReview.text,
-        scores: { 
-          difficulty: Number(newReview.difficulty), 
-          workload: Number(newReview.workload), 
-          stress: Number(newReview.stress), 
-          enjoyment: Number(newReview.enjoyment) 
-        },
-        votes: 0,
-        createdAt: new Date()
-      });
-      setShowForm(false);
-      setNewReview({ text: '', difficulty: '', workload: '', stress: '', enjoyment: '' });
-    } catch (e) { console.error(e); }
-  };
+const submitReview = async () => {
+  if (!user) return;
+  try {
+    await addDoc(collection(db, "reviews", courseId, "items"), {
+      user: user.displayName || 'Anonymous User',
+      text: newReview.text,
+      scores: { 
+        difficulty: Number(newReview.difficulty), 
+        workload: Number(newReview.workload), 
+        stress: Number(newReview.stress), 
+        enjoyment: Number(newReview.enjoyment) 
+      },
+      votes: 0,
+      createdAt: new Date()
+    });
+  } catch (e) { 
+    console.error(e); 
+  } finally {
+    // Always close and reset, even if the write failed
+    setNewReview({ text: '', difficulty: '', workload: '', stress: '', enjoyment: '' });
+    setShowForm(false);
+  }
+};
 
   const isFormValid = newReview.text.trim() !== '' && newReview.difficulty !== '' && newReview.workload !== '' && newReview.stress !== '' && newReview.enjoyment !== '';
 
@@ -171,7 +175,23 @@ const handleVote = async (reviewId, voteType) => {
           {showForm && (
             
             <div style={{ backgroundColor: '#F3F4F6', padding: '25px', borderRadius: '12px', marginBottom: '30px', border: '1px solid #E5E7EB' }}>
-              <textarea placeholder="Insert text here..." value={newReview.text} onChange={(e) => setNewReview({...newReview, text: e.target.value})} style={{ width: '100%', border: 'none', background: 'transparent', fontSize: '16px', outline: 'none', minHeight: '60px', marginBottom: '20px', resize: 'none' }} />
+              <div style={{ position: 'relative' }}>
+  <textarea
+    placeholder="Insert text here..."
+    value={newReview.text}
+    maxLength={1000}
+    onChange={(e) => setNewReview({...newReview, text: e.target.value})}
+    style={{ width: '100%', border: 'none', background: 'transparent', fontSize: '16px', outline: 'none', minHeight: '60px', marginBottom: '4px', resize: 'none' }}
+  />
+  <div style={{
+    textAlign: 'right',
+    fontSize: '12px',
+    color: newReview.text.length > 900 ? (newReview.text.length >= 1000 ? '#EF4444' : '#F97316') : '#9CA3AF',
+    marginBottom: '16px'
+  }}>
+    {newReview.text.length}/1000
+  </div>
+</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', borderTop: '1px solid #E5E7EB', paddingTop: '15px' }}>
                 {['difficulty', 'workload', 'stress', 'enjoyment'].map(attr => (
                   <label key={attr} style={{ display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 'bold' }}>
