@@ -2,7 +2,8 @@ import GoogleLogin from "./GoogleAuth";
 import { useState } from 'react';
 import { Home, Search, SlidersHorizontal} from 'lucide-react'
 
-function SearchField({ className = '', value, onChange, onSubmit }) {
+
+function SearchField({ className = '', value, onChange, onSubmit, }) {
     return (
       <form
         onSubmit={(e) => {
@@ -31,7 +32,7 @@ function SearchField({ className = '', value, onChange, onSubmit }) {
   }
 
 
-function Navbar({ goToCourseList, toggleOverlay, setPage }) {
+function Navbar({ goToCourseList, toggleOverlay, setPage, user }) {
     const [query, setQuery] = useState('')
 
     const submitSearch = () => {
@@ -57,6 +58,12 @@ function Navbar({ goToCourseList, toggleOverlay, setPage }) {
               onSubmit={submitSearch}
             />
           </div>
+            {user && (
+              <a
+              className="text-white">
+                {user.displayName}
+              </a>
+            )}
           <div className="ml-auto flex items-center gap-2 sm:gap-3">
               <GoogleLogin></GoogleLogin>
           </div>

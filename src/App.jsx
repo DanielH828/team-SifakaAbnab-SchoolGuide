@@ -27,6 +27,15 @@ function App() {
     getItems()
   }, [])
 
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser)
+    })
+    return () => unsubscribe()
+  }, [])
+
   const toggleOverlay = () => setOverlayOpen((v) => !v)
 
   const goToCourseList = ({ category = null, query = '' } = {}) => {
@@ -46,6 +55,7 @@ function App() {
         goToCourseList={goToCourseList}
         // toggleOverlay={toggleOverlay}
         setPage={setPage}
+        user={user}
         />
       {overlayOpen && <ProfileOverlay userName="Guest" setPage={(p) => { setOverlayOpen(false); setPage(p) }} />}
       {page === 'Homepage' && (
