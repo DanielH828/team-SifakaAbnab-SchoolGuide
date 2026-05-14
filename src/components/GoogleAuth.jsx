@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { db, auth, provider } from '../firebase'; // Custom Firebase config
 import { signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth'; // Auth methods
 import { collection, getDocs } from 'firebase/firestore'; // Firestore methods
+import './GoogleAuth.css';
 
 function GoogleLogin() {
   // State to hold the logged-in user

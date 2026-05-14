@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
-import { auth } from './firebase'
-import { onAuthStateChanged } from 'firebase/auth'
+import { useState, useEffect } from 'react';
+import { db } from './firebase';
+import { collection, getDocs } from 'firebase/firestore';
 import CourseProfile from './CourseProfile.jsx'
 import CourseList from './CourseList.jsx'
 import './App.css'
@@ -11,11 +11,21 @@ import Error from './Error.jsx'
 import ReviewCard from './Reviewcard.jsx'
 
 function App() {
+  const [items, setItems] = useState([])
   const [page, setPage] = useState('Homepage')
   const [overlayOpen, setOverlayOpen] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCourse, setSelectedCourse] = useState(null)
+  const itemsCollection = collection(db, 'placeholderID')
+
+  useEffect(() => {
+    const getItems = async () => {
+      const data = await getDocs(itemsCollection)
+      setItems(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    }
+    getItems()
+  }, [])
 
   const [user, setUser] = useState(null)
 
@@ -49,27 +59,25 @@ function App() {
         />
       {overlayOpen && <ProfileOverlay userName="Guest" setPage={(p) => { setOverlayOpen(false); setPage(p) }} />}
       {page === 'Homepage' && (
-        <Homepage toggleOverlay={toggleOverlay} goToCourseList={goToCourseList} />
+        <Homepage toggleOverlay={toggleOverlay} 
+        goToCourseList={goToCourseList} />
       )}
       {page === 'CourseList' && (
         <CourseList
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
+          items={items}
+          openCourse={openCourse}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
-          openCourse={openCourse}
         />
       )}
       {page === 'courseProfile' && selectedCourse && (
         <>
           <CourseProfile
             setPage={setPage}
-            courseName={selectedCourse.name}
-            courseDesc={selectedCourse.description}
+            courseName={selectedCourse.class || 'Nonesssssssssssssssss'}
+            courseDesc={selectedCourse.desc || 'None'}
             prereqs={selectedCourse.prereq || 'None'}
-            subject={selectedCourse.categories.join(', ') || 'Uncategorized'}
-            difficulty="—"
-            hwTime="—"
+            subject={selectedCourse.subject || 'Uncategorized'}
             teachers={selectedCourse.teachers || 'TBD'}
           />
           <ReviewCard

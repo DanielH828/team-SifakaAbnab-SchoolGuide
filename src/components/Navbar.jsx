@@ -1,6 +1,6 @@
 import GoogleLogin from "./GoogleAuth";
 import { useState } from 'react';
-import { Home, Search, SlidersHorizontal } from 'lucide-react'
+import { Home, Search, SlidersHorizontal} from 'lucide-react'
 
 
 function SearchField({ className = '', value, onChange, onSubmit, }) {
@@ -65,17 +65,7 @@ function Navbar({ goToCourseList, toggleOverlay, setPage, user }) {
               </a>
             )}
           <div className="ml-auto flex items-center gap-2 sm:gap-3">
-            <button
-              type="button"
-              className="cursor-pointer rounded-[11px] bg-sif-green-accent px-4 py-2 text-sm font-bold text-white hover:brightness-110 sm:px-5 sm:py-2.5 sm:text-base"
-
-              
-            >
-
               <GoogleLogin></GoogleLogin>
-            </button>
-
-
           </div>
         </div>
       </header>
