@@ -1,4 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from './firebase'
+import { normalizeCourse } from './data/normalizeCourse.js'
 import CourseProfile from './CourseProfile.jsx'
 import CourseList from './CourseList.jsx'
 import './App.css'
@@ -14,6 +17,18 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCourse, setSelectedCourse] = useState(null)
+  const [courses, setCourses] = useState(null)
+
+  useEffect(() => {
+    getDocs(collection(db, 'placeholderID'))
+      .then((snap) =>
+        setCourses(snap.docs.map((d) => normalizeCourse(d.id, d.data()))),
+      )
+      .catch((err) => {
+        console.error('Failed to load courses', err)
+        setCourses([])
+      })
+  }, [])
 
   const toggleOverlay = () => setOverlayOpen((v) => !v)
 
@@ -41,6 +56,7 @@ function App() {
       )}
       {page === 'CourseList' && (
         <CourseList
+          courses={courses}
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
           searchQuery={searchQuery}
