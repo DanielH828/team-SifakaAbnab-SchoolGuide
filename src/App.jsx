@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
+import { auth, db } from './firebase'
 import { collection, getDocs } from 'firebase/firestore'
-import { db } from './firebase'
+import { onAuthStateChanged } from 'firebase/auth'
 import { normalizeCourse } from './data/normalizeCourse.js'
 import CourseProfile from './CourseProfile.jsx'
 import CourseList from './CourseList.jsx'
@@ -18,6 +19,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCourse, setSelectedCourse] = useState(null)
   const [courses, setCourses] = useState(null)
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     getDocs(collection(db, 'placeholderID'))
@@ -28,6 +30,13 @@ function App() {
         console.error('Failed to load courses', err)
         setCourses([])
       })
+  }, [])
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser)
+    })
+    return () => unsubscribe()
   }, [])
 
   const toggleOverlay = () => setOverlayOpen((v) => !v)
@@ -45,11 +54,12 @@ function App() {
 
   return (
     <>
-      <Navbar 
+      <Navbar
         goToCourseList={goToCourseList}
         toggleOverlay={toggleOverlay}
         setPage={setPage}
-        />
+        user={user}
+      />
       {overlayOpen && <ProfileOverlay userName="Guest" setPage={(p) => { setOverlayOpen(false); setPage(p) }} />}
       {page === 'Homepage' && (
         <Homepage toggleOverlay={toggleOverlay} goToCourseList={goToCourseList} />
@@ -72,8 +82,6 @@ function App() {
             courseDesc={selectedCourse.description}
             prereqs={selectedCourse.prereq || 'None'}
             subject={selectedCourse.categories.join(', ') || 'Uncategorized'}
-            difficulty="—"
-            hwTime="—"
             teachers={selectedCourse.teachers || 'TBD'}
           />
           <ReviewCard
