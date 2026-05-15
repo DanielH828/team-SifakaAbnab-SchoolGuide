@@ -1,20 +1,21 @@
 import './CourseList.css'
 import ListCard from './ListCard.jsx'
 import { useMemo } from 'react'
-import { CATEGORY_LABELS } from './data/normalizeCourse.js'
+import { normalizeCourse, CATEGORY_LABELS } from './data/normalizeCourse.js'
 
-function matchesQuery(course, q) {
+function matchesQuery(item, q) {
   if (!q) return true
   const needle = q.toLowerCase()
   return (
-    course.name.toLowerCase().includes(needle) ||
-    course.description.toLowerCase().includes(needle) ||
-    (course.teachers || '').toLowerCase().includes(needle)
+    (item.class || '').toLowerCase().includes(needle) ||
+    (item.desc || '').toLowerCase().includes(needle) ||
+    (item.teacher || '').toLowerCase().includes(needle) ||
+    (item.subject || '').toLowerCase().includes(needle)
   )
 }
 
 function CourseList({
-  courses,
+  items = [],
   selectedCategory,
   setSelectedCategory,
   searchQuery,
@@ -22,18 +23,19 @@ function CourseList({
   openCourse,
 }) {
   const filtered = useMemo(() => {
-    return (courses || []).filter(
-      (c) =>
-        (selectedCategory === null || c.categories.includes(selectedCategory)) &&
-        matchesQuery(c, searchQuery),
-    )
-  }, [courses, selectedCategory, searchQuery])
+    return items.filter((item) => {
+      if (!matchesQuery(item, searchQuery)) return false
+      if (!selectedCategory) return true
+      const { categories } = normalizeCourse(item.id, item)
+      return categories.includes(selectedCategory)
+    })
+  }, [items, selectedCategory, searchQuery])
 
   return (
     <>
       <ul className="filterThing">
         <li
-          className={selectedCategory === null ? 'active' : ''}
+          className={!selectedCategory ? 'active' : ''}
           onClick={() => setSelectedCategory(null)}
         >
           All
@@ -58,18 +60,16 @@ function CourseList({
         </div>
       )}
 
-      <div className="listCard">
-        {courses === null && <p className="emptyState">Loading classes…</p>}
-        {courses !== null && filtered.length === 0 && (
+      <div className="cardContainer">
+        {filtered.length === 0 && (
           <p className="emptyState">No classes match.</p>
         )}
-        {filtered.map((course) => (
+        {filtered.map((item) => (
           <ListCard
-            key={course.id}
-            courseName2={course.name}
-            difficulty={course.categories.join(', ') || '—'}
-            workload={course.prereq ? `Prereq: ${course.prereq}` : 'No prereqs'}
-            onClick={() => openCourse(course)}
+            key={item.id}
+            courseName2={item.class}
+            courseSubject={item.subject}
+            onClick={() => openCourse(item)}
           />
         ))}
       </div>
