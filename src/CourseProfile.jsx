@@ -28,15 +28,7 @@ function CourseProfile({courseName, courseDesc, prereqs, subject, difficulty, hw
                     <p>{teachers}</p>
                 </div>
 
-                <div className='boxForProfile' id='boxDifficulty'>
-                    <h3>Difficulty:</h3>
-                    <p>{difficulty}</p>
-                </div>
-
-                <div className='boxForProfile' id='boxHWTime'>
-                    <h3>Avg HW Time:</h3>
-                    <p>{hwTime}</p>
-                </div>
+                
 
                 <div id="whyCantIGethrToWork"></div>
                 

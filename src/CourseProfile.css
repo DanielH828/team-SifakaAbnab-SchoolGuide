@@ -50,7 +50,7 @@
 
 #boxDesc {
     grid-column: span 10;
-    grid-row: span 3;
+    grid-row: span 2;
 }
 
 #boxPrereqs {
