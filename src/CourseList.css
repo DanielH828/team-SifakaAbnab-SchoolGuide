@@ -13,6 +13,9 @@
     background-color: white;
     border-radius: 0.5rem;
     padding: 0.75rem 1rem;
+    width: min(40rem, 100% - 2rem);
+    margin: 0.75rem auto;
+    box-sizing: border-box;
     cursor: pointer;
     border: 1px solid rgb(170, 209, 188);
     transition: background-color 0.15s ease, transform 0.15s ease;
@@ -48,35 +51,36 @@
     margin-right: 1rem;
 }
 
-.filter-fade {
-    position: relative;
+.filterThing {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: rgb(211, 241, 225);
+    margin: 0;
 }
 
-@media (max-width: 639px) {
-    .filter-fade {
-        -webkit-mask-image: linear-gradient(
-            to right,
-            transparent 0,
-            black 1.25rem,
-            black calc(100% - 1.25rem),
-            transparent 100%
-        );
-                mask-image: linear-gradient(
-            to right,
-            transparent 0,
-            black 1.25rem,
-            black calc(100% - 1.25rem),
-            transparent 100%
-        );
-    }
+.filterThing li {
+    padding: 4px 10px;
+    background-color: rgb(255, 255, 255);
+    margin: 4px 5px;
+    border-radius: 1rem;
+    cursor: pointer;
+    user-select: none;
+    color: rgb(23, 74, 67);
+    transition: background-color 0.15s ease;
+}
 
-    .filter-fade ul::-webkit-scrollbar {
-        display: none;
-    }
+.filterThing li:hover {
+    background-color: rgb(140, 190, 165);
+    color: rgb(0, 0, 0);
+}
 
-    .filter-fade ul {
-        scrollbar-width: none;
-    }
+.filterThing li.active {
+    background-color: rgb(23, 74, 67);
+    color: white;
 }
 
 .searchBanner {

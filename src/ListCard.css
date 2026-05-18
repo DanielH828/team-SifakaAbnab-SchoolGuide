@@ -11,5 +11,7 @@
 #listCard p{
     text-align: left;
     padding: 5px 10px 0px 10px;
+    color: rgb(23, 74, 67);
+    align-items: center;
 }
 

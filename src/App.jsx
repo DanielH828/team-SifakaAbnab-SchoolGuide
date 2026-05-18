@@ -67,6 +67,8 @@ function App() {
         <CourseList
           items={items}
           openCourse={openCourse}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
         />
