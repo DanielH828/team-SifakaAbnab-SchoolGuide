@@ -81,7 +81,7 @@ function App() {
             courseDesc={selectedCourse.desc || 'None'}
             prereqs={selectedCourse.prereq || 'None'}
             subject={selectedCourse.subject || 'Uncategorized'}
-            teachers={selectedCourse.teachers || 'TBD'}
+            teachers={selectedCourse.teacher || 'TBD'}
           />
           <ReviewCard
             selectedCourse={selectedCourse.id}
